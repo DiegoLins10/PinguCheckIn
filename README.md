@@ -1,4 +1,4 @@
-## Projeto - Sistema de Controle de Empréstimo e Devolução de Livros
+## Projeto Pingu CheckIn- Sistema de Reservas
 ### Centro Paula Souza - Fatec Ferraz - Curso de Análise e Desenvolvimento de Sistemas
 ### Disciplina – Laboratório de Engenharia de Software – Prof. PATRICIA SARNO MENDES
 
