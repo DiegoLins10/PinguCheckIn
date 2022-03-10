@@ -1,0 +1,15 @@
+1- Criar um banco com o nome Pingu
+
+2- Mudar a conectionString no appsettings.json para a da sua maquina
+exemplo:
+"Server=DESKTOP-57R83FD;Database=Pingu;User Id=sa;Password=dede140126;"
+
+3- ir no canto superior esquerdo do visual studio 2019 > View 
+> Other windows/Outras janelas > Abrir o "Package manager console"
+
+4- no package manager console digitar: update-Database
+
+5- pronto seu banco estará com as tabelas
+
+
+
