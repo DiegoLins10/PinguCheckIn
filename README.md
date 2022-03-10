@@ -21,7 +21,7 @@ realizada pelo grupo e uma ata é publicada no Teams.
 - REQ01 – Cadastrar novos usuarios
 Como – Por uma tela de cadastro
 Quando – Um novo usuario quiser se cadastrar
-De maneira que – seja possível acessar o siste,a
+De maneira que – seja possível acessar o sistema
 - REQ01CT01 – Fazer Login
 Dado: que o usuario já tenha se cadastrado
 Quando: o usuario quiser se logar na sua conta
