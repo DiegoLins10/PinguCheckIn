@@ -19,5 +19,17 @@ namespace PinguCheckIn.Models
         public string Celular { get; set; }
         public bool Funcionario { get; set; }
 
+        public Usuario(string username, string senha, string nome, string email, string cpf, string rg, string celular, bool funcionario)
+        {
+            Username = username;
+            Senha = senha;
+            Nome = nome;
+            Email = email;
+            Cpf = cpf;
+            Rg = rg;
+            Celular = celular;
+            Funcionario = funcionario;
+        }
     }
+
 }
