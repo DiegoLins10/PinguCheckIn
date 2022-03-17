@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace PinguCheckIn.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("")]
     [ApiController]
     public class LoginsController : ControllerBase
     {
