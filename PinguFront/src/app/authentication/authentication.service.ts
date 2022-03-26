@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from '@angular/common/http';
-import { catchError, of } from "rxjs";
+import { catchError, Observable, of } from "rxjs";
 import { map, observable } from "rxjs";
 
 export interface Credentials {
@@ -50,19 +50,18 @@ export class AuthenticationService{
 // }
 
 login(credenciais: any){
-    return this.httpClient.post<any>(this.url + 'login', credenciais)
+    return this.httpClient.post<any>(this.url + 'login', credenciais, {observe: 'response'})
     .pipe(
         map(body => {
           const cred = {
-            user: body.userName,
-            senha: body.senha,
-            token: body.token
+            user: body.body.userName,
+            senha: body.body.senha,
+            token: body.body.token
           }
-        this.setCredentials(cred, false);
-         return body
-        }),
-        catchError(() =>  of('Error acessar metodo da Api'))
-    );
+        this.setCredentials(cred, false)
+        return body;
+        })
+      );
 }
 
 /**
@@ -86,4 +85,40 @@ private clearCredentials() {
  sessionStorage.removeItem(credentialsKey);
  localStorage.removeItem(credentialsKey);
 }
+
+
+  /**
+   * Logs out the user and clear credentials.
+   * @return True if the user was logged out successfully.
+   */
+   logout(): Observable<boolean> {
+    // Customize credentials invalidation here
+    this.clearCredentials();
+  
+    return of(true);
+  }
+
+  /**
+   * Checks is the user is authenticated.
+   * @return True if the user is authenticated.
+   */
+  isAuthenticated(): boolean {
+    return !!this.credentials;
+  }
+ 
+  /**
+   * Gets the user credentials.
+   * @return The user credentials or null if the user is not authenticated.
+   */
+  get credentials(): Credentials | null {
+    return this._credentials;
+  }
+
+  /**
+   * Sets the user credentials.
+   * The credentials may be persisted across sessions by setting the `remember` parameter to true.
+   * Otherwise, the credentials are only persisted for the current session.
+   * @param credentials The user credentials.
+   * @param remember True to remember credentials across sessions.*/
+
 }

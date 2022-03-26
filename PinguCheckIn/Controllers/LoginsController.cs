@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc;
 using PinguCheckIn.Data;
 using PinguCheckIn.Models;
 using PinguCheckIn.Services;
@@ -28,6 +28,10 @@ namespace PinguCheckIn.Controllers
         {
             // recupera o usuario
             var user = this._context.Usuario.Where(u => u.Username.ToUpper() == (login.Username.ToUpper())).FirstOrDefault();
+
+            if (!user.Senha.Equals(login.Senha)){
+                return BadRequest(new { message = "Senha incorreta"});
+            }
 
             //Verifica se o usuário existe
             if (user == null)
