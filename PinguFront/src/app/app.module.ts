@@ -10,6 +10,8 @@ import { FormsModule } from '@angular/forms';
 import { AuthenticationComponent } from './authentication/authentication.component';
 import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './home/home.component';
+import { Interceptor } from './authentication/authentication.Interceptor';
+
 
 @NgModule({
   declarations: [
@@ -24,7 +26,8 @@ import { HomeComponent } from './home/home.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    Interceptor
   ],
   providers: [],
   bootstrap: [AppComponent]

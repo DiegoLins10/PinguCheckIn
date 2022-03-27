@@ -2,6 +2,7 @@ import { Injectable } from "@angular/core";
 import { HttpClient } from '@angular/common/http';
 import { catchError, Observable, of } from "rxjs";
 import { map, observable } from "rxjs";
+import { Router } from "@angular/router";
 
 export interface Credentials {
   
@@ -20,11 +21,28 @@ export class AuthenticationService{
     _credentials: Credentials | null;
      url = 'https://localhost:44354/';
 
-    constructor(private httpClient: HttpClient) {
+    constructor(private httpClient: HttpClient, private router: Router) {
         const savedCredentials = sessionStorage.getItem(credentialsKey) || localStorage.getItem(credentialsKey);
         if (savedCredentials) {
           this._credentials = JSON.parse(savedCredentials);
         }
+        // if(!this.isAuthenticated()){
+        //   this.redirectTo('/');
+        //   location.reload();
+        // }
+        if(this.isAuthenticated()){
+        this.httpClient.get<any>(this.url + 'api/Usuarios', {observe: 'response'}).
+        pipe(map(body => body))
+        .subscribe(res => {
+          
+          },
+          error =>{
+            if(error.status == 401){
+              this.logout();  
+              }
+           });
+          }
+          
       }
 
       /**
@@ -121,4 +139,14 @@ private clearCredentials() {
    * @param credentials The user credentials.
    * @param remember True to remember credentials across sessions.*/
 
+
+   redirectTo(uri:string){
+    this.router.navigateByUrl('/', {skipLocationChange: true}).then(()=>
+    this.router.navigate([uri]));
+ }
+
+ teste(){
+   return this.httpClient.get<any>(this.url + 'api/Usuarios', {observe: 'response'})
+   .pipe(map(body => body))
+ }
 }

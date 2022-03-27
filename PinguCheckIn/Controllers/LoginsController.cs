@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using PinguCheckIn.Data;
 using PinguCheckIn.Models;
@@ -11,6 +12,7 @@ using System.Threading.Tasks;
 
 namespace PinguCheckIn.Controllers
 {
+    [AllowAnonymous]
     [Route("")]
     [ApiController]
     public class LoginsController : ControllerBase
@@ -29,14 +31,16 @@ namespace PinguCheckIn.Controllers
             // recupera o usuario
             var user = this._context.Usuario.Where(u => u.Username.ToUpper() == (login.Username.ToUpper())).FirstOrDefault();
 
-            if (!user.Senha.Equals(login.Senha)){
-                return BadRequest(new { message = "Senha incorreta"});
-            }
 
             //Verifica se o usuário existe
             if (user == null)
             {
                 return NotFound(new { message = "Usuário ou senha invalidos" });
+            }
+
+            if (!user.Senha.Equals(login.Senha))
+            {
+                return BadRequest(new { message = "Senha incorreta" });
             }
 
             // Gera token 
