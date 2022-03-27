@@ -26,7 +26,7 @@ namespace PinguCheckIn.Services
                     new Claim(ClaimTypes.Email, user.Email),
                     new Claim(ClaimTypes.MobilePhone, user.Celular)
                 }),
-                Expires = DateTime.UtcNow.AddMinutes(1),
+                Expires = DateTime.UtcNow.AddHours(1),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha512Signature)
             };
 
