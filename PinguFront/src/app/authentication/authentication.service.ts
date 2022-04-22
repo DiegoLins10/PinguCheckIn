@@ -6,7 +6,7 @@ import { Router } from "@angular/router";
 
 export interface Credentials {
   
-    user: string;
+    email: string;
     senha: string;
     token: string;
   }
@@ -72,7 +72,7 @@ login(credenciais: any){
     .pipe(
         map(body => {
           const cred = {
-            user: body.body.userName,
+            email: body.body.email,
             senha: body.body.senha,
             token: body.body.token
           }

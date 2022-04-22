@@ -29,13 +29,13 @@ namespace PinguCheckIn.Controllers
         public async Task<ActionResult<dynamic>> AuthenticateAsync([FromBody] LoginCredencial login)
         {
             // recupera o usuario
-            var user = this._context.Usuario.Where(u => u.Username.ToUpper() == (login.Username.ToUpper())).FirstOrDefault();
+            var user = this._context.Usuario.Where(u => u.Email.ToUpper() == (login.Email.ToUpper())).FirstOrDefault();
 
 
             //Verifica se o usuário existe
             if (user == null)
             {
-                return NotFound(new { message = "Usuário ou senha invalidos" });
+                return NotFound(new { message = "Email não cadastrado." });
             }
 
             if (!user.Senha.Equals(login.Senha))

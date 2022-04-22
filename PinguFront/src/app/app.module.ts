@@ -11,6 +11,7 @@ import { AuthenticationComponent } from './authentication/authentication.compone
 import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './home/home.component';
 import { Interceptor } from './authentication/authentication.Interceptor';
+import { CadastroComponent } from './cadastro/cadastro.component';
 
 
 @NgModule({
@@ -21,6 +22,7 @@ import { Interceptor } from './authentication/authentication.Interceptor';
     FooterComponent,
     AuthenticationComponent,
     HomeComponent,
+    CadastroComponent,
   ],
   imports: [
     BrowserModule,

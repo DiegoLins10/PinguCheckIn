@@ -22,9 +22,9 @@ namespace PinguCheckIn.Data
                 return; // DB já foi populado
             }
 
-            Usuario us1 = new Usuario("diegolins10", "teste10", "Diego Fernandes Lins", "diego.lins@fatec.sp.gov.br", "24053232813", "180037808", "11987549239", true); 
-            Usuario us2 = new Usuario("vini10", "teste10", "Vinicius Oliveira", "Vinicius.Oliveira@fatec.sp.gov.br", "24033332813", "180337808", "1166667779", true); 
-            Usuario us3 = new Usuario("nathan10", "teste10", "Nathan Silva", "Nathan@fatec.sp.gov.br", "24444232813", "180222808", "11966669239", true);
+            Usuario us1 = new Usuario("diego.lins@fatec.sp.gov.br", "teste10", "Diego", "Fernandes Lins", "24053232813", "180037808", "11987549239", true); 
+            Usuario us2 = new Usuario("Vinicius.Oliveira@fatec.sp.gov.br", "teste10", "Vinicius", " Oliveira", "24033332813", "180337808", "1166667779", true); 
+            Usuario us3 = new Usuario("Nathan@fatec.sp.gov.br", "teste10", "Nathan", "Silva", "24444232813", "180222808", "11966669239", true);
 
 
 

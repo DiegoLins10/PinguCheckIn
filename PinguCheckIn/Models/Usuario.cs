@@ -10,21 +10,21 @@ namespace PinguCheckIn.Models
     {
         [Key]
         public int IdUsuario { get; set; }
-        public string Username { get; set; }
+        public string Email { get; set; }
         public string Senha { get; set; }
         public string Nome { get; set; }
-        public string Email { get; set; }
+        public string Sobrenome { get; set; }
         public string Cpf { get; set; }
         public string Rg { get; set; }
         public string Celular { get; set; }
         public bool Funcionario { get; set; }
 
-        public Usuario(string username, string senha, string nome, string email, string cpf, string rg, string celular, bool funcionario)
+        public Usuario(string email, string senha, string nome, string sobrenome, string cpf, string rg, string celular, bool funcionario)
         {
-            Username = username;
+            Email = email;
             Senha = senha;
             Nome = nome;
-            Email = email;
+            Sobrenome = sobrenome;
             Cpf = cpf;
             Rg = rg;
             Celular = celular;

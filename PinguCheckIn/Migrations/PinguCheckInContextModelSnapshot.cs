@@ -46,7 +46,7 @@ namespace PinguCheckIn.Migrations
                     b.Property<string>("Senha")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Username")
+                    b.Property<string>("Sobrenome")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("IdUsuario");

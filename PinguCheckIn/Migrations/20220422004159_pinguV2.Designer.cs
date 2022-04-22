@@ -9,8 +9,8 @@ using PinguCheckIn.Data;
 namespace PinguCheckIn.Migrations
 {
     [DbContext(typeof(PinguCheckInContext))]
-    [Migration("20220310222432_Pingu")]
-    partial class Pingu
+    [Migration("20220422004159_pinguV2")]
+    partial class pinguV2
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -48,7 +48,7 @@ namespace PinguCheckIn.Migrations
                     b.Property<string>("Senha")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Username")
+                    b.Property<string>("Sobrenome")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("IdUsuario");

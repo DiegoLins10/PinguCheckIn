@@ -20,13 +20,15 @@ export class LoginComponent implements OnInit {
     this.autenticado = this.authenticationService.isAuthenticated();
     if(this.autenticado){
       this.router.navigate(['/home'])
+    }else{
+      this.router.navigate([''])
     }
   }
 
   login(){
     this.loading = true;
     var exp = {
-      userName: this.user,
+      email: this.user,
       senha: this.senha
     }
     this.authenticationService.login(exp)
@@ -37,7 +39,7 @@ export class LoginComponent implements OnInit {
      }
      console.log(res);
     }, error =>{
-     // console.log(error)
+      console.log(error)
     });
   }
 
