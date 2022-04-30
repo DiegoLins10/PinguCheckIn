@@ -1,39 +1,49 @@
-<div class="registration-form">
-    <form>
+<div class="registration-form ">
+    <form class="needs-validation" novalidate>
         <div class="form-icon">
             <img class="logo" src="../../assets/pinguim_logo-removebg-preview.png" alt="">
         </div>
-        <div class="form-group">
-            <input type="text" class="form-control item" id="Nome" placeholder="Nome">
+        <div class="form-group has-validation">
+            <input type="text" [(ngModel)]="cadastro.Nome" [ngModelOptions]="{standalone: true}" class="form-control item" id="Nome" placeholder="Nome" required>
         </div>
-        <div class="form-group">
-            <input type="text" class="form-control item" id="Sobrenome" placeholder="Sobrenome">
+        <div class="form-group has-validation">
+            <input type="text" [(ngModel)]="cadastro.Sobrenome" [ngModelOptions]="{standalone: true}" class="form-control item" id="Sobrenome" placeholder="Sobrenome" required>
         </div>
-        <div class="form-group">
-            <input type="text" class="form-control item" id="email" placeholder="Email">
+        <div class="form-group has-validation">
+            <input type="text" [(ngModel)]="cadastro.Email" [ngModelOptions]="{standalone: true}" class="form-control item" id="email" placeholder="Email" required>
         </div>
-        <div class="form-group">
-            <input type="text" class="form-control item" id="email" placeholder="Confirmar email">
+        <div class="form-group has-validation">
+            <input type="password" [(ngModel)]="cadastro.Senha" [ngModelOptions]="{standalone: true}" class="form-control item" id="password" placeholder="Senha" required>
         </div>
-        <div class="form-group">
-            <input type="password" class="form-control item" id="password" placeholder="Senha">
+        <div class="form-group has-validation">
+            <input type="password" [(ngModel)]="senha" [ngModelOptions]="{standalone: true}" class="form-control item" id="password2" placeholder="Confirmar senha" required>
         </div>
-        <div class="form-group">
-            <input type="text" class="form-control item" id="phone-number" placeholder="Celular">
+        <div class="form-group has-validation">
+            <input type="text" [(ngModel)]="cadastro.Celular" [ngModelOptions]="{standalone: true}" class="form-control item" id="phone-number" mask="(00) 00000-0000" placeholder="Celular" required>
         </div>
-        <div class="form-group">
-            <input type="text" class="form-control item" id="birth-date" placeholder="Data de nascimento">
+        <div class="form-group has-validation">
+            <input type="date" [(ngModel)]="cadastro.DataNascimento" [ngModelOptions]="{standalone: true}" class="form-control item" id="birth-date" placeholder="Data de nascimento" required>
         </div>
-        <div class="form-group">
-            <button type="button" class="btn btn-block create-account">Criar conta</button>
+        <div class="form-group has-validation">
+            <input type="text" [(ngModel)]="cadastro.Cpf" [ngModelOptions]="{standalone: true}" class="form-control item" id="cpg" mask="000.000.000.00" placeholder="CPF" required>
         </div>
+        <div class="form-group has-validation">
+            <input type="text" [(ngModel)]="cadastro.Rg" [ngModelOptions]="{standalone: true}" class="form-control item" id="rg" mask="00.000.000-0" placeholder="RG" required>
+        </div>
+        <div class="form-group has-validation">
+            <button type="button" class="btn btn-block create-account" (click)="Cadastrar()">Criar conta</button>
+        </div>
+        <div class="form-group has-validation">
+            <button type="button" routerLink="/" class="btn btn-block create-account">Voltar Login</button>
+        </div>
+
+        <div *ngIf="mensagem && mensagem.length > 0">
+            <div *ngFor="let msg of mensagem">
+                <div class="alert alert-danger"  role="alert">
+                    {{msg}}
+                </div>
+            </div>          
+        </div>
+
     </form>
-    <div class="social-media">
-        <h5>Sign up with social media</h5>
-        <div class="social-icons">
-            <a href="#"><i class="icon-social-facebook" title="Facebook"></i></a>
-            <a href="#"><i class="icon-social-google" title="Google"></i></a>
-            <a href="#"><i class="icon-social-twitter" title="Twitter"></i></a>
-        </div>
-    </div>
 </div>

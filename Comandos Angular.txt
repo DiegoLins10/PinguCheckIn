@@ -1,0 +1,2 @@
+gera um servico
+ng generate service <nome>

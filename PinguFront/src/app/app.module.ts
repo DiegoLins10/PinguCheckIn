@@ -12,6 +12,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './home/home.component';
 import { Interceptor } from './authentication/authentication.Interceptor';
 import { CadastroComponent } from './cadastro/cadastro.component';
+import { NgxMaskModule, IConfig } from 'ngx-mask'
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { CadastroComponent } from './cadastro/cadastro.component';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    Interceptor
+    Interceptor,
+    NgxMaskModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]
