@@ -9,6 +9,8 @@ export interface Credentials {
     email: string;
     senha: string;
     token: string;
+    nome: string;
+    sobrenome: string;
   }
 
 const credentialsKey = 'credentials';
@@ -72,8 +74,10 @@ login(credenciais: any){
     .pipe(
         map(body => {
           const cred = {
-            email: body.body.email,
-            senha: body.body.senha,
+            email: body.body.user.email,
+            senha: body.body.user.senha,
+            nome: body.body.user.nome,
+            sobrenome: body.body.user.sobrenome,
             token: body.body.token
           }
         this.setCredentials(cred, false)
