@@ -17,11 +17,11 @@ namespace PinguCheckIn.Controllers
     [ApiController]
     public class LoginsController : ControllerBase
     {
-        private readonly PinguCheckInContext _context;
+        private readonly PinguCheckInContext Contexto;
 
         public LoginsController(PinguCheckInContext context)
         {
-            _context = context;
+            Contexto = context;
         }
 
         [HttpPost]
@@ -29,7 +29,7 @@ namespace PinguCheckIn.Controllers
         public async Task<ActionResult<dynamic>> AuthenticateAsync([FromBody] LoginCredencial login)
         {
             // recupera o usuario
-            var user = this._context.Usuario.Where(u => u.Email.ToUpper() == (login.Email.ToUpper())).FirstOrDefault();
+            var user = this.Contexto.Usuario.Where(u => u.Email.ToUpper() == (login.Email.ToUpper())).FirstOrDefault();
 
 
             //Verifica se o usuário existe
@@ -54,6 +54,33 @@ namespace PinguCheckIn.Controllers
             {
                 user = user,
                 token = token
+            });
+        }
+
+
+        [HttpPost]
+        [Route("Cadastro")]
+        public IActionResult Cadastro([FromBody] Usuario usuario)
+        {
+            var validaCpf = this.Contexto.Usuario.Where(d => d.Cpf.Trim() == usuario.Cpf.Trim());
+            var validaEmail = this.Contexto.Usuario.Where(d => d.Email.Trim() == usuario.Email.Trim());
+
+            if (validaCpf.Any())
+            {
+                return BadRequest("CPF já cadastrado");
+            }
+            if (validaEmail.Any())
+            {
+                return BadRequest("Email já cadastrado");
+            }
+
+
+            this.Contexto.Add(usuario);
+            this.Contexto.SaveChanges();
+           
+            return Ok(new
+            {
+                mensagem = "Usuario cadastrado com sucesso."
             });
         }
 

@@ -3,21 +3,21 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
-import { ReservaComponent } from './reserva.component';
+import { NavComponent } from './nav.component';
 
-describe('ReservaComponent', () => {
-  let component: ReservaComponent;
-  let fixture: ComponentFixture<ReservaComponent>;
+describe('NavComponent', () => {
+  let component: NavComponent;
+  let fixture: ComponentFixture<NavComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(async(()   => {
     TestBed.configureTestingModule({
-      declarations: [ ReservaComponent ]
+      declarations: [ NavComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ReservaComponent);
+    fixture = TestBed.createComponent(NavComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

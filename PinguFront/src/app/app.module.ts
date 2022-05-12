@@ -12,13 +12,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './home/home.component';
 import { Interceptor } from './authentication/authentication.Interceptor';
 import { CadastroComponent } from './cadastro/cadastro.component';
-import { ReservaComponent } from './reserva/reserva.component';
+import { NgxMaskModule, IConfig } from 'ngx-mask'
+import { HotelReservaComponent } from './hotel-reserva/hotel-reserva.component';
 import { NavComponent } from './shared/nav/nav.component';
-import { NavComponent } from './nav/nav.component';
 
 
 @NgModule({
-  declarations: [	
+  declarations: [
     AppComponent,
     HeaderComponent,
     LoginComponent,
@@ -26,15 +26,15 @@ import { NavComponent } from './nav/nav.component';
     AuthenticationComponent,
     HomeComponent,
     CadastroComponent,
-      ReservaComponent,NavComponent,
-      NavComponent
+      HotelReservaComponent,NavComponent
    ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    Interceptor
+    Interceptor,
+    NgxMaskModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]
