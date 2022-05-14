@@ -1,28 +1,27 @@
-<app-header></app-header>
+<app-header [quartos]="'active'"></app-header>
 
  <!-- TITULO  -->
-<div class="d-flex   p-3 my-3 text-white bg-secondary rounded shadow-sm">
+ <div class="mt-5">
+ <div class="d-flex centered p-3 my-3 text-dark bg-color">
     <div class="d-flex align-items-center mr-auto">
         <i class=" mr-3"></i>
         <div class="lh-100">
-            <h2 class="mb-0 "> titulo </h2>
-            <small>subtitulo</small>
+            <h2 class="mb-0 "> Quartos</h2>
+            <small>Abaixo você encontrará todos os quartos disponíveis.</small>
         </div>
     </div>
-    <div class="p-3" >
-        <button class="btn btn-outline-light">
-        Listar titulo}
-      </button>
+    <div class="p-3 mr-3" >
+        <!-- <img class="logo" src="../../assets/pingu-logo.png" alt=""> -->
     </div>
 </div>
-
+</div>
 
 <!-- CONTAINER -->
-<div class="centered bg-secondary">
-    <div class="container mb-8">
+<div class="centered bg-color"> 
+    <div class="container mb-8 mt-4">
         <div class="row">
-            <div class="col mt-5" *ngFor="let item of quartos">
-            <div class="card" style="width: 18rem;">
+            <div class="col mt-5 m-r" *ngFor="let item of quartos">
+            <div class="card mb-5 border-20" style="width: 16rem;">
                 <img class="card-img-top" src="{{item.imagem}}">
                 <div class="card-body">
                     <h5 class="card-title">{{item.nome}}</h5>

@@ -1,6 +1,6 @@
 
 
-    <app-header></app-header>
+    <app-header [home]="'active'"></app-header>
   
     <!-- Full Width Column -->
     <div class="content-wrapper">
@@ -11,12 +11,12 @@
         
         <section class="content">
         
-          <div class="jumbotron welcome-jumbotron">
+          <div class="jumbotron welcome-jumbotron mt-5">
              <h1>Bem vindo ao Pingu!</h1>
              <p>
                Precisa de uma reserva? Reserve da sua casa agora!
              </p>
-             <a class="btn btn-primary btn-lg" (click)="teste()">Ver Quartos</a>
+             <a class="btn btn-primary btn-lg" routerLink="/quartos">Ver Quartos</a>
              <!-- <a class="btn btn-primary btn-lg" [routerLink]="['/']">Ver Quartos</a> -->
           </div>
         

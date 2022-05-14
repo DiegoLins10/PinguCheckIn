@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthenticationService } from '../authentication/authentication.service';
 
@@ -11,6 +11,9 @@ export class HeaderComponent implements OnInit {
 
   autenticado: any
   nome: any;
+  @Input() home: any
+  @Input() quartos: any
+  @Input() historico: any
 
   constructor(private authenticationService: AuthenticationService) { }
 
