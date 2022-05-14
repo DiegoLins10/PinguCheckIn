@@ -1,0 +1,53 @@
+<app-header></app-header>
+
+ <!-- TITULO  -->
+<div class="d-flex   p-3 my-3 text-white bg-secondary rounded shadow-sm">
+    <div class="d-flex align-items-center mr-auto">
+        <i class=" mr-3"></i>
+        <div class="lh-100">
+            <h2 class="mb-0 "> titulo </h2>
+            <small>subtitulo</small>
+        </div>
+    </div>
+    <div class="p-3" >
+        <button class="btn btn-outline-light">
+        Listar titulo}
+      </button>
+    </div>
+</div>
+
+
+<!-- CONTAINER -->
+<div class="centered bg-secondary">
+    <div class="container mb-8">
+        <div class="row">
+            <div class="col mt-5" *ngFor="let item of quartos">
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top" src="{{item.imagem}}">
+                <div class="card-body">
+                    <h5 class="card-title">{{item.nome}}</h5>
+                    <!-- <p class="card-text">Um exemplo de texto rápido para construir o título do card e fazer preencher o
+                        conteúdo
+                        do card.</p> -->
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Valor: R$ {{item.valor.toFixed(2)}}</li>
+                    <li class="list-group-item">Tamanho: {{item.tamanho}}</li>
+                    <li class="list-group-item">Camas: {{item.qtdCamas}}</li>
+                    <li class="list-group-item">Acomoda: {{item.acomoda}}</li>
+                </ul>
+                <ul class="list-group list-group-flush" *ngFor="let n of item.beneficios">
+                    <li class="list-group-item">{{n}}</li>
+                </ul>
+                <div class="card-body">
+                    <a href="#" class="card-link">Link do card</a>
+                    <a href="#" class="card-link">Outro link</a>
+                </div>
+            </div>
+        </div>          
+    </div>
+    </div>
+
+</div>
+
+<app-footer></app-footer>

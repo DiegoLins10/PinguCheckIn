@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using PinguCheckIn.Models;
+using PinguCheckIn.Models.Entidades;
 
 namespace PinguCheckIn.Data
 {
@@ -15,5 +16,6 @@ namespace PinguCheckIn.Data
         }
 
         public DbSet<Usuario> Usuario { get; set; }
+        public DbSet<Quarto> Quarto { get; set; }
     }
 }

@@ -27,6 +27,9 @@
 
 .registration-form .logo{
     height: 200px;
+    position: relative;
+    left: -80px;
+    top: -20px;
 }
 
 .registration-form .item{
@@ -97,5 +100,8 @@
 
     .registration-form .logo{
         height: 150px;
+        position: relative;
+        left: -59px;
+        top: -20px;
     }
 }

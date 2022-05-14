@@ -29,6 +29,9 @@
 
 .registration-form .logo{
     height: 200px;
+    position: relative;
+    left: -80px;
+    top: -20px;
 }
 
 .registration-form .item{
@@ -87,8 +90,6 @@
 }
 
 
-
-
 @media (max-width: 576px) {
     .registration-form form{
         padding: 50px 20px;
@@ -103,5 +104,8 @@
 
     .registration-form .logo{
         height: 150px;
+        position: relative;
+        left: -59px;
+        top: -20px;
     }
 }

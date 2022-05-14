@@ -12,7 +12,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './home/home.component';
 import { Interceptor } from './authentication/authentication.Interceptor';
 import { CadastroComponent } from './cadastro/cadastro.component';
-import { NgxMaskModule, IConfig } from 'ngx-mask'
+import { NgxMaskModule, IConfig } from 'ngx-mask';
+import { QuartosComponent } from './quartos/quartos.component'
 
 
 @NgModule({
@@ -24,6 +25,7 @@ import { NgxMaskModule, IConfig } from 'ngx-mask'
     AuthenticationComponent,
     HomeComponent,
     CadastroComponent,
+    QuartosComponent,
   ],
   imports: [
     BrowserModule,

@@ -13,3 +13,11 @@ exemplo:
 
 
 
+------------ atualizar estrtura banco -----------
+
+Add-migration  Atualizar
+
+Update-Database
+
+
+

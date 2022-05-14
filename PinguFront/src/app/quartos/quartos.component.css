@@ -1,0 +1,10 @@
+.centered {
+    margin: 0 auto !important;
+    float: none !important;
+    width: 70%;
+}
+
+
+.mb-8{
+    margin-bottom:  4rem !important;
+}
