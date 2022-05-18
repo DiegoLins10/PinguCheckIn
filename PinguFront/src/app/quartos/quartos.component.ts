@@ -1,3 +1,5 @@
+
+import { formatDate } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthenticationService } from '../authentication/authentication.service';
@@ -14,6 +16,10 @@ export class QuartosComponent implements OnInit {
   autenticado: boolean;
   quartos: any;
   mensagem: any;
+  format: any = 'yyyy-MM-dd';
+  myDate: any = '2022-05-18';
+  locale: any = 'en-US';
+  max: any 
 
   constructor(private authenticationService: AuthenticationService, private router: Router, private service: QuartosService) { }
 
@@ -25,6 +31,9 @@ export class QuartosComponent implements OnInit {
     }else{
       this.router.navigate([''])
     }
+
+    this.max= formatDate(this.myDate, this.format, this.locale);
+    console.log(this.max);
   }
 
 

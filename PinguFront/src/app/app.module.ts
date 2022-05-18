@@ -13,7 +13,8 @@ import { HomeComponent } from './home/home.component';
 import { Interceptor } from './authentication/authentication.Interceptor';
 import { CadastroComponent } from './cadastro/cadastro.component';
 import { NgxMaskModule, IConfig } from 'ngx-mask';
-import { QuartosComponent } from './quartos/quartos.component'
+import { QuartosComponent } from './quartos/quartos.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 
 
 @NgModule({
@@ -34,6 +35,7 @@ import { QuartosComponent } from './quartos/quartos.component'
     HttpClientModule,
     Interceptor,
     NgxMaskModule.forRoot(),
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

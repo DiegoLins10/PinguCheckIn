@@ -6,15 +6,48 @@
     <div class="d-flex align-items-center mr-auto">
         <i class=" mr-3"></i>
         <div class="lh-100">
-            <h2 class="mb-0 "> Quartos</h2>
+            <h2 class="mb-0 "><i class="uil uil-bed-double"></i>
+                 Quartos</h2>
             <small>Abaixo você encontrará todos os quartos disponíveis.</small>
         </div>
     </div>
     <div class="p-3 mr-3" >
         <!-- <img class="logo" src="../../assets/pingu-logo.png" alt=""> -->
+    </div>  
+</div>
+</div>
+
+<div class="content">
+    
+    <div class="container text-left">
+      <div class="row justify-content-center">
+        <div class="col-lg-7">
+          <!-- <h2 class="mb-4 mt-2 text-center">Periodo de reserva</h2> -->
+          <form action="#" class="row mt-4">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="input_from">De</label>
+                  <input type="date" [(ngModel)]="max" [ngModelOptions]="{standalone: true}" class="form-control" id="input_from" placeholder="Start Date" max="{{max}}">
+                </div>
+                <h3>{{max}}</h3>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="input_to">Até</label>
+                  <input type="date" class="form-control" id="input_to" placeholder="End Date">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <a class="btn btn-primary" routerLink="/quartos">Filtrar</a>
+            </div>
+          </form>
+        </div>
+      </div>
+          
     </div>
-</div>
-</div>
+  </div>
+
+
 
 <!-- CONTAINER -->
 <div class="centered bg-color"> 
@@ -39,7 +72,7 @@
                     <li class="list-group-item">{{n}}</li>
                 </ul>
                 <div class="card-body">
-                    <a href="#" class="card-link">Link do card</a>
+                    <a href="#" class="card-link">Reservar</a>
                     <a href="#" class="card-link">Outro link</a>
                 </div>
             </div>

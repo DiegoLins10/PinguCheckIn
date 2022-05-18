@@ -106,6 +106,7 @@ private clearCredentials() {
  this._credentials =  null;
  sessionStorage.removeItem(credentialsKey);
  localStorage.removeItem(credentialsKey);
+ this.redirectTo('/')
 }
 
 
