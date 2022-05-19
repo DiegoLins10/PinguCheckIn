@@ -58,6 +58,13 @@ namespace PinguCheckIn.Controllers
             });
         }
 
+        [HttpGet]
+        [Route("usuarios")]
+        public IActionResult user()
+        {
+            return Ok(this.Contexto.Cliente.ToList());
+        }
+
 
         [HttpPost]
         [Route("Cadastro")]
