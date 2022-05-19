@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PinguCheckIn.Data;
 
 namespace PinguCheckIn.Migrations
 {
     [DbContext(typeof(PinguCheckInContext))]
-    partial class PinguCheckInContextModelSnapshot : ModelSnapshot
+    [Migration("20220519005836_TabelaCliente")]
+    partial class TabelaCliente
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

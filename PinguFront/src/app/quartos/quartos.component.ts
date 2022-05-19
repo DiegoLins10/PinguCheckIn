@@ -13,13 +13,15 @@ import { QuartosService } from './quartos.service';
 })
 export class QuartosComponent implements OnInit {
 
-  autenticado: boolean;
+  autenticado!: boolean;
   quartos: any;
   mensagem: any;
   format: any = 'yyyy-MM-dd';
-  myDate: any = '2022-05-18';
+  myDate: any = new Date();
   locale: any = 'en-US';
-  max: any 
+  diaHoje: any 
+  de: any
+  ate: any
 
   constructor(private authenticationService: AuthenticationService, private router: Router, private service: QuartosService) { }
 
@@ -32,8 +34,10 @@ export class QuartosComponent implements OnInit {
       this.router.navigate([''])
     }
 
-    this.max= formatDate(this.myDate, this.format, this.locale);
-    console.log(this.max);
+    this.diaHoje = formatDate(this.myDate, this.format, this.locale);
+    console.log(this.diaHoje);
+    console.log(this.de);
+    
   }
 
 

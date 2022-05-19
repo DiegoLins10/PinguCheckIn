@@ -40,6 +40,14 @@ namespace PinguCheckIn.Data
 
                 _context.Quarto.AddRange(q1, q2, q3, q4, q5, q6, q7, q8, q9);
             }
+            if (!_context.Cliente.Any())
+            {
+                Cliente c1 = new Cliente(null, null, null, null, null, null, null, null, 1);
+                Cliente c2 = new Cliente(null, null, null, null, null, null, null, null, 2);
+                Cliente c3 = new Cliente(null, null, null, null, null, null, null, null, 3);
+
+                _context.Cliente.AddRange(c1, c2, c3);
+            }
             
 
 

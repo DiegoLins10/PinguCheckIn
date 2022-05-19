@@ -17,5 +17,7 @@ namespace PinguCheckIn.Data
 
         public DbSet<Usuario> Usuario { get; set; }
         public DbSet<Quarto> Quarto { get; set; }
+        public DbSet<Cliente> Cliente { get; set; }
+
     }
 }

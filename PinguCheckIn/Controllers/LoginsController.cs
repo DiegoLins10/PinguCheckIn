@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using PinguCheckIn.Data;
 using PinguCheckIn.Models;
+using PinguCheckIn.Models.Entidades;
 using PinguCheckIn.Services;
 using System;
 using System.Collections.Generic;
@@ -77,6 +78,16 @@ namespace PinguCheckIn.Controllers
 
             this.Contexto.Add(usuario);
             this.Contexto.SaveChanges();
+
+            int idUsuarioCadastrado = this.Contexto.Usuario.Where(c => c.Cpf.Trim() == usuario.Cpf.Trim()).Select(c => c.IdUsuario).FirstOrDefault();
+
+
+            Cliente cliente = new Cliente(null, null, null, null, null, null, null, null, idUsuarioCadastrado);
+
+            this.Contexto.Add(cliente);
+            this.Contexto.SaveChanges();
+
+
            
             return Ok(new
             {

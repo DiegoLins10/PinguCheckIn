@@ -27,18 +27,18 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="input_from">De</label>
-                  <input type="date" [(ngModel)]="max" [ngModelOptions]="{standalone: true}" class="form-control" id="input_from" placeholder="Start Date" max="{{max}}">
+                  <input type="date" [(ngModel)]="de" [ngModelOptions]="{standalone: true}" class="form-control" id="input_from" placeholder="Start Date" min="{{diaHoje}}">
                 </div>
-                <h3>{{max}}</h3>
+                <h3>{{de}}</h3>
             </div>
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="input_to">Até</label>
-                  <input type="date" class="form-control" id="input_to" placeholder="End Date">
+                  <input type="date" [(ngModel)]="ate" [ngModelOptions]="{standalone: true}" class="form-control" id="input_to" placeholder="End Date" min="{{diaHoje}}">
                 </div>
             </div>
             <div class="col-md-6">
-                <a class="btn btn-primary" routerLink="/quartos">Filtrar</a>
+                <button class="btn btn-primary" [disabled]="de < diaHoje || ate < diaHoje || !de || !ate">Filtrar</button>
             </div>
           </form>
         </div>
@@ -63,7 +63,7 @@
                         do card.</p> -->
                 </div>
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item">Valor: R$ {{item.valor.toFixed(2)}}</li>
+                    <li class="list-group-item">Valor: R$ {{item.valor.toFixed(2)}} /Dia</li>
                     <li class="list-group-item">Tamanho: {{item.tamanho}}</li>
                     <li class="list-group-item">Camas: {{item.qtdCamas}}</li>
                     <li class="list-group-item">Acomoda: {{item.acomoda}}</li>
