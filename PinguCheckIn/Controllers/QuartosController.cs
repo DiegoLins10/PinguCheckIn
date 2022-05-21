@@ -61,41 +61,25 @@ namespace PinguCheckIn.Controllers
             return Ok(quartoList);
         }
 
+
         [HttpGet("GetQuartosFiltro")]
         public IActionResult GetQuartosFiltro()
         {
+            try {
+                var quartoList = new QuartoNegocio().Quartos(new FiltroQuarto { DataEntrada = new DateTime(2022, 06, 14), DataSaida = new DateTime(2022, 06, 17) });
 
-            var quartos = _context.Quarto.ToList();
+                if (!quartoList.Any())
+                {
+                    return NotFound("Nenhum quarto encontrado");
+                }
 
-            if (!quartos.Any())
-            {
-                return NotFound("Nenhum quarto encontrado");
+                return Ok(quartoList);
             }
-
-            List<QuartoDto> quartoList = new List<QuartoDto>();
-
-
-
-            foreach (var q in quartos)
+            catch(Exception e)
             {
-                QuartoDto qDto = new QuartoDto();
-
-                qDto.Acomoda = q.Acomoda;
-                qDto.Beneficios = q.Beneficios.Split(";");
-                qDto.IdQuarto = q.IdQuarto;
-                qDto.Imagem = q.Imagem;
-                qDto.Nome = q.Nome;
-                qDto.QtdCamas = q.QtdCamas;
-                qDto.Tamanho = q.Tamanho;
-                qDto.Valor = q.Valor;
-                quartoList.Add(qDto);
+                return BadRequest(e.Message);
             }
-
-            var teste = new QuartoNegocio().Quartos(new FiltroQuarto { DataEntrada = new DateTime(2022, 06, 14), DataSaida = new DateTime(2022, 06, 17)});
-
-            return Ok(quartoList);
-
-
+            
         }
             
     }
