@@ -20,8 +20,9 @@ namespace PinguCheckIn.Models.Entidades
         public string Uf { get; set; }
         public string Complemento { get; set; }
 
-        [ForeignKey("FK_IdUser")]
+        [ForeignKey("Usuario")]
         public int IdUsuario { get; set; }
+        public virtual Usuario Usuario { get; set; }
 
         public Cliente(char? sexo, string nacionalidade, string logradouro, string bairro, string cep, string cidade, string uf, string complemento, int idUsuario)
         {

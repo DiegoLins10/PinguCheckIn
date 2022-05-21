@@ -26,8 +26,6 @@ namespace PinguCheckIn.Models
         public DateTime DataNascimento { get; set; }
         public bool Funcionario { get; set; }
 
-        public List<Cliente> Clientes { get; set; }
-
         public Usuario(string email, string senha, string nome, string sobrenome, string cpf, string rg, string celular, DateTime dataNascimento, bool funcionario)
         {
             Email = email;

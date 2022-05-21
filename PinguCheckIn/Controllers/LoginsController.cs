@@ -27,7 +27,7 @@ namespace PinguCheckIn.Controllers
 
         [HttpPost]
         [Route("login")]
-        public async Task<ActionResult<dynamic>> AuthenticateAsync([FromBody] LoginCredencial login)
+        public IActionResult AuthenticateAsync([FromBody] LoginCredencial login)
         {
             // recupera o usuario
             var user = this.Contexto.Usuario.Where(u => u.Email.ToUpper() == (login.Email.ToUpper())).FirstOrDefault();

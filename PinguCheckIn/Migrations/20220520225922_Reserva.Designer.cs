@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PinguCheckIn.Data;
 
 namespace PinguCheckIn.Migrations
 {
     [DbContext(typeof(PinguCheckInContext))]
-    partial class PinguCheckInContextModelSnapshot : ModelSnapshot
+    [Migration("20220520225922_Reserva")]
+    partial class Reserva
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -53,9 +55,12 @@ namespace PinguCheckIn.Migrations
                     b.Property<string>("Uf")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("UsuarioIdUsuario")
+                        .HasColumnType("int");
+
                     b.HasKey("IdCliente");
 
-                    b.HasIndex("IdUsuario");
+                    b.HasIndex("UsuarioIdUsuario");
 
                     b.ToTable("Cliente");
                 });
@@ -91,43 +96,6 @@ namespace PinguCheckIn.Migrations
                     b.HasKey("IdQuarto");
 
                     b.ToTable("Quarto");
-                });
-
-            modelBuilder.Entity("PinguCheckIn.Models.Entidades.Reserva", b =>
-                {
-                    b.Property<int>("IdReserva")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("DataEntrada")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("DataReserva")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("DataSaida")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("IdCliente")
-                        .HasColumnType("int");
-
-                    b.Property<int>("IdQuarto")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Status")
-                        .HasColumnType("int");
-
-                    b.Property<decimal>("ValorTotal")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.HasKey("IdReserva");
-
-                    b.HasIndex("IdCliente");
-
-                    b.HasIndex("IdQuarto");
-
-                    b.ToTable("Reserva");
                 });
 
             modelBuilder.Entity("PinguCheckIn.Models.Usuario", b =>
@@ -174,32 +142,14 @@ namespace PinguCheckIn.Migrations
 
             modelBuilder.Entity("PinguCheckIn.Models.Entidades.Cliente", b =>
                 {
-                    b.HasOne("PinguCheckIn.Models.Usuario", "Usuario")
-                        .WithMany()
-                        .HasForeignKey("IdUsuario")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Usuario");
+                    b.HasOne("PinguCheckIn.Models.Usuario", null)
+                        .WithMany("Clientes")
+                        .HasForeignKey("UsuarioIdUsuario");
                 });
 
-            modelBuilder.Entity("PinguCheckIn.Models.Entidades.Reserva", b =>
+            modelBuilder.Entity("PinguCheckIn.Models.Usuario", b =>
                 {
-                    b.HasOne("PinguCheckIn.Models.Entidades.Cliente", "Cliente")
-                        .WithMany()
-                        .HasForeignKey("IdCliente")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("PinguCheckIn.Models.Entidades.Quarto", "Quarto")
-                        .WithMany()
-                        .HasForeignKey("IdQuarto")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Cliente");
-
-                    b.Navigation("Quarto");
+                    b.Navigation("Clientes");
                 });
 #pragma warning restore 612, 618
         }

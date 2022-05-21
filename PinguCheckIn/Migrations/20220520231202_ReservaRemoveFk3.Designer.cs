@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PinguCheckIn.Data;
 
 namespace PinguCheckIn.Migrations
 {
     [DbContext(typeof(PinguCheckInContext))]
-    partial class PinguCheckInContextModelSnapshot : ModelSnapshot
+    [Migration("20220520231202_ReservaRemoveFk3")]
+    partial class ReservaRemoveFk3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -54,8 +56,6 @@ namespace PinguCheckIn.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("IdCliente");
-
-                    b.HasIndex("IdUsuario");
 
                     b.ToTable("Cliente");
                 });
@@ -123,10 +123,6 @@ namespace PinguCheckIn.Migrations
 
                     b.HasKey("IdReserva");
 
-                    b.HasIndex("IdCliente");
-
-                    b.HasIndex("IdQuarto");
-
                     b.ToTable("Reserva");
                 });
 
@@ -170,36 +166,6 @@ namespace PinguCheckIn.Migrations
                     b.HasKey("IdUsuario");
 
                     b.ToTable("Usuario");
-                });
-
-            modelBuilder.Entity("PinguCheckIn.Models.Entidades.Cliente", b =>
-                {
-                    b.HasOne("PinguCheckIn.Models.Usuario", "Usuario")
-                        .WithMany()
-                        .HasForeignKey("IdUsuario")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Usuario");
-                });
-
-            modelBuilder.Entity("PinguCheckIn.Models.Entidades.Reserva", b =>
-                {
-                    b.HasOne("PinguCheckIn.Models.Entidades.Cliente", "Cliente")
-                        .WithMany()
-                        .HasForeignKey("IdCliente")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("PinguCheckIn.Models.Entidades.Quarto", "Quarto")
-                        .WithMany()
-                        .HasForeignKey("IdQuarto")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Cliente");
-
-                    b.Navigation("Quarto");
                 });
 #pragma warning restore 612, 618
         }
