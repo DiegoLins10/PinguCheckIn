@@ -62,11 +62,11 @@ namespace PinguCheckIn.Controllers
         }
 
 
-        [HttpGet("GetQuartosFiltro")]
-        public IActionResult GetQuartosFiltro()
+        [HttpPost("GetQuartosFiltro")]
+        public IActionResult GetQuartosFiltro(FiltroQuarto filtro)
         {
             try {
-                var quartoList = new QuartoNegocio().Quartos(new FiltroQuarto { DataEntrada = new DateTime(2022, 06, 14), DataSaida = new DateTime(2022, 06, 17) });
+                var quartoList = new QuartoNegocio().Quartos(filtro);
 
                 if (!quartoList.Any())
                 {

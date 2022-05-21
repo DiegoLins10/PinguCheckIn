@@ -18,6 +18,15 @@ export class QuartosService {
     .pipe(map((body: any) => body));
   }
 
+  GetQuartosFilter(data: any){
+    return this.httpClient
+    .post<any>(this.url + `Quartos/GetQuartosFiltro`, data)
+    .pipe(map((body: any) => body));
+  }
+
+
+
+
 
   
 }

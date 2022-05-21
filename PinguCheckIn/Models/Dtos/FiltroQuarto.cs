@@ -10,6 +10,6 @@ namespace PinguCheckIn.Models.Dtos
         public DateTime DataEntrada { get; set; }
         public DateTime DataSaida { get; set; }
 
-        public int IdQuarto { get; set; }
+        public int? IdQuarto { get; set; }
     }
 }

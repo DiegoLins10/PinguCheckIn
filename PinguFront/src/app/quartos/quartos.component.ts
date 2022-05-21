@@ -42,11 +42,35 @@ export class QuartosComponent implements OnInit {
 
 
   getQuartos(){
+    this.mensagem = []
+
     this.service.GetQuartos().subscribe(res =>{
       this.quartos = res
     }, error =>{
-      this.mensagem = error;
+      this.mensagem.push(error.error)
       console.log(error);
+    });
+  }
+
+
+  getQuartosFiltro(){
+    this.mensagem = []
+
+    var data = {
+      DataEntrada: this.de,
+      DataSaida: this.ate
+    }
+
+    this.service.GetQuartosFilter(data).subscribe({
+      next: res =>{
+        this.quartos = res;
+        console.log(res);
+      },
+      error: error => {
+        this.quartos = []
+        this.mensagem.push(error.error);
+        console.log(error);
+      }
     });
   }
 
