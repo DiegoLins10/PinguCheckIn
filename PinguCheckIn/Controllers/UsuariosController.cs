@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using PinguCheckIn.Data;
 using PinguCheckIn.Models;
+using PinguCheckIn.Models.Dtos;
 
 namespace PinguCheckIn.Controllers
 {
@@ -34,17 +35,40 @@ namespace PinguCheckIn.Controllers
 
         // GET: api/Usuarios/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Usuario>> GetUsuario(int id)
+        public IActionResult GetUsuario(int id)
         {
-            var usuario = await _context.Usuario.FindAsync(id);
+            var usuario = (from user in this._context.Usuario
+                           join cliente in this._context.Cliente on user.IdUsuario equals cliente.IdUsuario
+                           where user.IdUsuario == id
+                           select new DadosDto
+                           {
+                               Sexo = cliente.Sexo,
+                               Nacionalidade = cliente.Nacionalidade,
+                               Logradouro = cliente.Logradouro,
+                               Bairro = cliente.Bairro,
+                               Cep = cliente.Cep,
+                               Cidade = cliente.Cidade,
+                               Uf = cliente.Cidade,
+                               Complemento = cliente.Cidade,
+                               Nome = user.Nome,
+                               Email = user.Email,
+                               Sobrenome = user.Sobrenome,
+                               Cpf = user.Cpf,
+                               Rg = user.Rg,
+                               Celular = user.Celular,
+                               DataNascimento = user.DataNascimento,
+                               Funcionario = user.Funcionario
+                           }) ;
 
             if (usuario == null)
             {
-                return NotFound();
+                return NotFound("Usuario não encontrado.");
             }
 
-            return usuario;
+            return Ok(usuario);
         }
+
+
 
         // PUT: api/Usuarios/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754

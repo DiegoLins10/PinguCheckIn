@@ -1,0 +1,32 @@
+.teste{
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 105px;
+}
+
+
+.centered {
+    margin: 0 auto !important;
+    float: none !important;
+    width: 70%; 
+    border-radius: 20px;
+}
+
+
+.mb-8{
+    margin-bottom:  6rem !important;
+}
+
+.border-20{
+    border-radius: 20px;
+}
+
+.logo{
+    width: 200px;
+}
+
+.bg-color{
+    background-color: #f2f2f2;
+}
+
+
