@@ -58,7 +58,7 @@ namespace PinguCheckIn.Controllers
                                Celular = user.Celular,
                                DataNascimento = user.DataNascimento,
                                Funcionario = user.Funcionario
-                           }) ;
+                           }).FirstOrDefault();
 
             if (usuario == null)
             {

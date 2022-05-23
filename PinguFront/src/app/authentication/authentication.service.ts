@@ -11,6 +11,7 @@ export interface Credentials {
     token: string;
     nome: string;
     sobrenome: string;
+    idUsuario: any;
   }
 
 const credentialsKey = 'credentials';
@@ -78,7 +79,8 @@ login(credenciais: any){
             senha: body.body.user.senha,
             nome: body.body.user.nome,
             sobrenome: body.body.user.sobrenome,
-            token: body.body.token
+            token: body.body.token,
+            idUsuario: body.body.user.idUsuario
           }
         this.setCredentials(cred, false)
         return body;

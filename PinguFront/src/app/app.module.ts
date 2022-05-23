@@ -36,7 +36,7 @@ import { PerfilComponent } from './perfil/perfil.component'
     FormsModule,
     HttpClientModule,
     Interceptor,
-    ReactiveFormsModule,
+    ReactiveFormsModule.withConfig({warnOnNgModelWithFormControl: 'never'}),
     FormsModule,
     NgxMaskModule.forRoot(),
     
