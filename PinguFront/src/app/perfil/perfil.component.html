@@ -17,7 +17,7 @@
 </div>
 
 <div class="card rounded shadow-sm centered">
-    <form [formGroup]="form" (ngSubmit)="onSubmit()" autocomplete="off">
+    <form [formGroup]="form" (ngSubmit)="onSubmit() " autocomplete="no" >
         <div class="row p-3">
             <div class="col-lg-3 pt-1">
                 <div class="card mb-3">
@@ -30,22 +30,22 @@
                         </a>
                     </div>
                     <div class="card-body">
-                        <div class="h4 text-center mb-3">@jonis</div>
-                        <div class="h7 text-bold pb-1"><b>Nome:</b> Miracle wonder</div>
+                        <div class="h4 text-center mb-3">@{{usuario.nome}}</div>
+                        <div class="h7 text-bold pb-1"><b>Nome:</b> {{usuario.nome }} {{usuario.sobrenome}}</div>
                         <div class="h7">
-                            Developer of web applications, JavaScript, PHP, Java, Python, Ruby, Java, Node.js, etc.
+                            Suas informações podem ser alteradas ao lado.
                         </div>
                     </div>
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item">
                             <div class="row">
                                 <div class="col-6 text-center border-right">
-                                    <div class="h5">1342</div>
-                                    <div class="h6 text-muted">Eventos Ministrados</div>
+                                    <div class="h5">{{usuario.reservas}}</div>
+                                    <div class="h6 text-muted">Solicitações de Reservas</div>
                                 </div>
                                 <div class="col-6 text-center">
-                                    <div class="h5">1342</div>
-                                    <div class="h6 text-muted">Eventos Participados</div>
+                                    <div class="h5">{{usuario.reservasFinalizadas}}</div>
+                                    <div class="h6 text-muted">Solicitações finalizadas</div>
                                 </div>
                             </div>
                         </li>
@@ -63,7 +63,7 @@
                         <select formControlName="titulo" [(ngModel)]="usuario.sexo" class="form-control"
                             [ngClass]="{ 'is-invalid': f.titulo.errors && f.titulo.touched }">
                             <!-- <option value=""></option> -->
-                            <option value=undefined disabled>Não selecionado</option>
+                            <option value=null disabled>Não selecionado</option>
                             <option value="M">Masculino</option>
                             <option value="F">Feminino</option>
 
@@ -150,7 +150,7 @@
                     <div class="form-group col-sm-3">
                         <label>CEP</label>
                         <input type="text" [(ngModel)]="usuario.cep" formControlName="cep" class="form-control"
-                            [ngClass]="{ 'is-invalid': f.cep.errors && f.cep.touched }">
+                            [ngClass]="{ 'is-invalid': f.cep.errors && f.cep.touched }" mask="00000-000">
                         <div *ngIf="f.cep.errors && f.cep.touched" class="invalid-feedback">
                             <div *ngIf="f.cep.errors.required">CEP é obrigatório</div>
                         </div>
@@ -163,13 +163,10 @@
                             <div *ngIf="f.uf.errors.required">Uf é obrigatório</div>
                         </div>
                     </div>
-                    <div class="form-group col-sm-4">
+                    <div class="form-group col-sm-4" >
                         <label>Complemento</label>
-                        <input autocomplete="disabled" type="text" [(ngModel)]="usuario.complemento" formControlName="complemento" class="form-control"
-                        [ngClass]="{ 'is-invalid': f.complemento.errors && f.complemento.touched }">
-                        <div *ngIf="f.complemento.errors && f.complemento.touched" class="invalid-feedback">
-                            <div *ngIf="f.complemento.errors.required">complemento é obrigatório</div>
-                        </div> 
+                        <input type="text" [(ngModel)]="usuario.complemento" formControlName="complemento" class="form-control">
+
                     </div>
                 </div>
                 <div>
@@ -179,7 +176,7 @@
                 <div class="form-row">
                     <div class="form-group col-sm">
                         <label>Senha</label>
-                        <input type="password" formControlName="senha" class="form-control"
+                        <input type="password" formControlName="senha" value=" " class="form-control"
                             [ngClass]="{ 'is-invalid': f.senha.errors && f.senha.touched }" />
                         <div *ngIf="f.senha.errors && f.senha.touched" class="invalid-feedback">
                             <div *ngIf="f.senha.errors.required">Senha é obrigatório</div>
@@ -198,13 +195,20 @@
                 </div>
             </div>
         </div>
-        <h3>{{usuario.complemento}}</h3>
         <div class="card-footer">
+            <div class="centered" *ngIf="mensagem && mensagem.length > 0">
+                <div *ngFor="let msg of mensagem">
+                    <div class="alert alert-danger"  role="alert">
+                        {{msg}}
+                    </div>
+                </div>          
+            </div>
             <div class="d-flex">
                 <button (click)="resetForm($event)" class="btn btn-outline-secondary mr-auto border">
                     Cancelar Alteração
                 </button>
-                <button class="btn btn-success">
+
+                <button class="btn btn-success" (click)="Salvar()">
                     Salvar Alteração
                 </button>
             </div>

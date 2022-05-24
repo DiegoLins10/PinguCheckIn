@@ -16,6 +16,7 @@ namespace PinguCheckIn.Models.Dtos
         public string Uf { get; set; }
         public string Complemento { get; set; }
         public int? IdUsuario { get; set; }
+        public int? IdCliente { get; set; }
         public string Email { get; set; }
         public string Senha { get; set; }
         public string Nome { get; set; }
@@ -25,5 +26,7 @@ namespace PinguCheckIn.Models.Dtos
         public string Celular { get; set; }
         public DateTime DataNascimento { get; set; }
         public bool Funcionario { get; set; }
+        public int? Reservas { get; set; }
+        public int? ReservasFinalizadas { get; set; }
     }
 }

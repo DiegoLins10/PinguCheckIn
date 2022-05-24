@@ -9,6 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using PinguCheckIn.Data;
 using PinguCheckIn.Models;
 using PinguCheckIn.Models.Dtos;
+using PinguCheckIn.Models.Enums;
 
 namespace PinguCheckIn.Controllers
 {
@@ -57,7 +58,9 @@ namespace PinguCheckIn.Controllers
                                Rg = user.Rg,
                                Celular = user.Celular,
                                DataNascimento = user.DataNascimento,
+                               IdCliente = cliente.IdCliente,
                                Funcionario = user.Funcionario
+
                            }).FirstOrDefault();
 
             if (usuario == null)
@@ -65,9 +68,36 @@ namespace PinguCheckIn.Controllers
                 return NotFound("Usuario não encontrado.");
             }
 
+            usuario.Reservas = this._context.Reserva.Where(d => d.IdCliente == usuario.IdCliente).Count();
+            usuario.ReservasFinalizadas = this._context.Reserva.Where(d => d.IdCliente == usuario.IdCliente && d.Status == (int)Status.Finalizada).Count();
+
+
             return Ok(usuario);
         }
 
+        [HttpPost("AlterarSenha")]
+        public IActionResult AlterarSenha(AlterarSenhaDto alterar)
+        {
+            var usuario = this._context.Usuario.Where(u => u.IdUsuario == alterar.IdUsuario).FirstOrDefault();
+
+            if (usuario == null)
+            {
+                return NotFound("Usuario não encontrado.");
+            }
+
+            usuario.Senha = alterar.Senha.Trim();
+            this._context.SaveChanges();
+
+            return Ok("Senha alterada com sucesso");
+        }
+
+        [HttpPut("Atualizar")]
+        public IActionResult AtualizarUser(DadosDto dados)
+        {
+
+
+            return Ok();
+        }
 
 
         // PUT: api/Usuarios/5

@@ -54,7 +54,7 @@ export class PerfilComponent implements OnInit {
       Logradouro: ['', Validators.required],
       cep: ['', Validators.required],
       uf: ['', Validators.required],
-      complemento: ['', Validators.required],
+      complemento: [''],
       senha: ['', [Validators.minLength(6), Validators.nullValidator]],
       confirmeSenha: ['', Validators.nullValidator]
     }, formOptions);
@@ -64,8 +64,22 @@ export class PerfilComponent implements OnInit {
   onSubmit(): void {
 
     if (this.form.invalid) {
-      return;
+      return
     }
+    else{
+      
+    }
+  }
+
+  Salvar(){
+    this.mensagem = []
+    if(this.form.invalid){
+      this.mensagem.push("Erro no formulário, Verifique seus dados")
+    }
+    else{
+      console.log("nao deu erro")
+    }
+    
   }
 
   public resetForm(event: any): void {
