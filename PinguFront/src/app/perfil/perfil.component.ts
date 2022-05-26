@@ -17,6 +17,7 @@ export class PerfilComponent implements OnInit {
   autenticado!: boolean;
   usuario: any;
   mensagem: any;
+  sucesso: any;
 
   nome: any
   format: any = 'yyyy-MM-dd';
@@ -51,8 +52,11 @@ export class PerfilComponent implements OnInit {
       cpf: ['', Validators.required],
       rg: ['', Validators.required],
       nacionalidade: ['', Validators.required],
-      Logradouro: ['', Validators.required],
+      logradouro: ['', Validators.required],
+      bairro: ['', Validators.required],
       cep: ['', Validators.required],
+      cidade: ['', Validators.required],
+      numero: ['', Validators.required],
       uf: ['', Validators.required],
       complemento: [''],
       senha: ['', [Validators.minLength(6), Validators.nullValidator]],
@@ -73,19 +77,27 @@ export class PerfilComponent implements OnInit {
 
   Salvar(){
     this.mensagem = []
+    this.sucesso =[]
     if(this.form.invalid){
       this.mensagem.push("Erro no formulário, Verifique seus dados")
     }
     else{
-      console.log("nao deu erro")
+      this.service.Atualizar(this.usuario).subscribe({
+        next: res => {
+          this.sucesso.push(res.msg);  
+        },
+        error: error =>{
+          this.mensagem.push(error.error);
+        }
+      })
     }
     
   }
 
-  public resetForm(event: any): void {
-    event.preventDefault();
-    this.form.reset();
-  }
+  // public resetForm(event: any): void {
+  //   event.preventDefault();
+  //   this.form.reset();
+  // }
 
 
 GetUser(){
@@ -99,6 +111,24 @@ GetUser(){
       },
       error: error => {         
         this.mensagem.push(error.error);
+        console.log(error);
+      }
+    });
+  }
+
+
+  BuscarEndereco(){
+    this.service.getEndereco(this.usuario.cep)
+    .subscribe({
+      next: res => {
+        console.log(res);
+        this.usuario.logradouro = res.logradouro;
+        this.usuario.complemento = res.complemento;
+        this.usuario.bairro = res.bairro;
+        this.usuario.uf = res.uf;
+        this.usuario.cidade = res.localidade;
+      },
+      error: error => {
         console.log(error);
       }
     });

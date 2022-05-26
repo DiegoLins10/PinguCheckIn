@@ -24,6 +24,7 @@ namespace PinguCheckIn.Models.Dtos
         public string Cpf { get; set; }
         public string Rg { get; set; }
         public string Celular { get; set; }
+        public long? Numero { get; set; }
         public DateTime DataNascimento { get; set; }
         public bool Funcionario { get; set; }
         public int? Reservas { get; set; }

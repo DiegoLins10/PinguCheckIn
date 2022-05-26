@@ -17,7 +17,7 @@
 </div>
 
 <div class="card rounded shadow-sm centered">
-    <form [formGroup]="form" (ngSubmit)="onSubmit() " autocomplete="no" >
+    <form [formGroup]="form"  autocomplete="no" (keydown.enter)="$event.preventDefault()">
         <div class="row p-3">
             <div class="col-lg-3 pt-1">
                 <div class="card mb-3">
@@ -63,7 +63,7 @@
                         <select formControlName="titulo" [(ngModel)]="usuario.sexo" class="form-control"
                             [ngClass]="{ 'is-invalid': f.titulo.errors && f.titulo.touched }">
                             <!-- <option value=""></option> -->
-                            <option value=null disabled>Não selecionado</option>
+                            <!-- <option value='' disabled>Não selecionado</option> -->
                             <option value="M">Masculino</option>
                             <option value="F">Feminino</option>
 
@@ -139,20 +139,37 @@
                             <div *ngIf="f.nacionalidade.errors.required">Nacionalidade é obrigatório</div>
                         </div>
                     </div>
-                    <div class="form-group col-sm-3">
-                        <label>Logradouro</label>
-                        <input type="text" [(ngModel)]="usuario.Logradouro" formControlName="Logradouro" class="form-control"
-                            [ngClass]="{ 'is-invalid': f.Logradouro.errors && f.Logradouro.touched }">
-                        <div *ngIf="f.Logradouro.errors && f.Logradouro.touched" class="invalid-feedback">
-                            <div *ngIf="f.Logradouro.errors.required">Logradouro é obrigatório</div>
-                        </div>
-                    </div>
+
                     <div class="form-group col-sm-3">
                         <label>CEP</label>
-                        <input type="text" [(ngModel)]="usuario.cep" formControlName="cep" class="form-control"
+                        <input type="text" [(ngModel)]="usuario.cep" (change)="BuscarEndereco()" formControlName="cep" class="form-control"
                             [ngClass]="{ 'is-invalid': f.cep.errors && f.cep.touched }" mask="00000-000">
                         <div *ngIf="f.cep.errors && f.cep.touched" class="invalid-feedback">
                             <div *ngIf="f.cep.errors.required">CEP é obrigatório</div>
+                        </div>
+                    </div>
+                    <div class="form-group col-sm-3">
+                        <label>Logradouro</label>
+                        <input type="text" [(ngModel)]="usuario.logradouro" formControlName="logradouro" class="form-control"
+                            [ngClass]="{ 'is-invalid': f.logradouro.errors && f.logradouro.touched }">
+                        <div *ngIf="f.logradouro.errors && f.logradouro.touched" class="invalid-feedback">
+                            <div *ngIf="f.logradouro.errors.required">Logradouro é obrigatório</div>
+                        </div>
+                    </div>
+                    <div class="form-group col-sm-3">
+                        <label>Bairro</label>
+                        <input type="text" [(ngModel)]="usuario.bairro" formControlName="bairro" class="form-control"
+                            [ngClass]="{ 'is-invalid': f.bairro.errors && f.bairro.touched }">
+                        <div *ngIf="f.bairro.errors && f.bairro.touched" class="invalid-feedback">
+                            <div *ngIf="f.bairro.errors.required">Bairro é obrigatório</div>
+                        </div>
+                    </div>
+                    <div class="form-group col-sm-3">
+                        <label>Cidade</label>
+                        <input type="text" [(ngModel)]="usuario.cidade" formControlName="cidade" class="form-control"
+                            [ngClass]="{ 'is-invalid': f.cidade.errors && f.cidade.touched }">
+                        <div *ngIf="f.cidade.errors && f.cidade.touched" class="invalid-feedback">
+                            <div *ngIf="f.cidade.errors.required">Cidade é obrigatório</div>
                         </div>
                     </div>
                     <div class="form-group col-sm-3">
@@ -161,6 +178,14 @@
                             [ngClass]="{ 'is-invalid': f.uf.errors && f.uf.touched }">
                         <div *ngIf="f.uf.errors && f.uf.touched" class="invalid-feedback">
                             <div *ngIf="f.uf.errors.required">Uf é obrigatório</div>
+                        </div>
+                    </div>
+                    <div class="form-group col-sm-2">
+                        <label>Numero residencial</label>
+                        <input type="number" [(ngModel)]="usuario.numero" formControlName="numero" class="form-control"
+                            [ngClass]="{ 'is-invalid': f.numero.errors && f.numero.touched }">
+                        <div *ngIf="f.numero.errors && f.numero.touched" class="invalid-feedback">
+                            <div *ngIf="f.numero.errors.required">Numero residencial é obrigatório</div>
                         </div>
                     </div>
                     <div class="form-group col-sm-4" >
@@ -203,8 +228,15 @@
                     </div>
                 </div>          
             </div>
+            <div class="centered" *ngIf="sucesso && sucesso.length > 0">
+                <div *ngFor="let msg of sucesso">
+                    <div class="alert alert-success"  role="alert">
+                        {{msg}}
+                    </div>
+                </div>          
+            </div>
             <div class="d-flex">
-                <button (click)="resetForm($event)" class="btn btn-outline-secondary mr-auto border">
+                <button routerLink="/" class="btn btn-outline-secondary mr-auto border">
                     Cancelar Alteração
                 </button>
 

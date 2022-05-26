@@ -47,6 +47,9 @@ namespace PinguCheckIn.Migrations
                     b.Property<string>("Nacionalidade")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<long?>("Numero")
+                        .HasColumnType("bigint");
+
                     b.Property<string>("Sexo")
                         .HasColumnType("nvarchar(1)");
 

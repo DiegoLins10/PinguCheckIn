@@ -49,16 +49,18 @@ namespace PinguCheckIn.Controllers
                                Bairro = cliente.Bairro,
                                Cep = cliente.Cep,
                                Cidade = cliente.Cidade,
-                               Uf = cliente.Cidade,
-                               Complemento = cliente.Cidade,
+                               Uf = cliente.Uf,
+                               Complemento = cliente.Complemento,
                                Nome = user.Nome,
                                Email = user.Email,
                                Sobrenome = user.Sobrenome,
                                Cpf = user.Cpf,
                                Rg = user.Rg,
                                Celular = user.Celular,
+                               Numero = cliente.Numero,
                                DataNascimento = user.DataNascimento,
                                IdCliente = cliente.IdCliente,
+                               IdUsuario = user.IdUsuario,
                                Funcionario = user.Funcionario
 
                            }).FirstOrDefault();
@@ -75,28 +77,46 @@ namespace PinguCheckIn.Controllers
             return Ok(usuario);
         }
 
-        [HttpPost("AlterarSenha")]
-        public IActionResult AlterarSenha(AlterarSenhaDto alterar)
-        {
-            var usuario = this._context.Usuario.Where(u => u.IdUsuario == alterar.IdUsuario).FirstOrDefault();
 
-            if (usuario == null)
+        [HttpPost("Atualizar")]
+        public IActionResult AtualizarUser(DadosDto dados)
+        {
+            var usuario = this._context.Usuario.Where(u => u.IdUsuario == dados.IdUsuario).FirstOrDefault();
+            var cliente = this._context.Cliente.Where(u => u.IdUsuario == dados.IdUsuario).FirstOrDefault();
+
+            if (usuario == null || cliente == null)
             {
                 return NotFound("Usuario não encontrado.");
             }
 
-            usuario.Senha = alterar.Senha.Trim();
+            if(dados.Senha != null)
+            {
+                usuario.Senha = dados.Senha.Trim();
+            }
+
+            cliente.Sexo = dados.Sexo;
+            cliente.Nacionalidade = dados.Nacionalidade;
+            cliente.Logradouro = dados.Logradouro;
+            cliente.Bairro = dados.Bairro;
+            cliente.Cep = dados.Cep;
+            cliente.Cidade = dados.Cidade;
+            cliente.Uf = dados.Uf.ToUpperInvariant();
+            cliente.Complemento = dados.Complemento;
+            cliente.Numero = dados.Numero;
+            usuario.Nome = dados.Nome;
+            usuario.Email = dados.Email;
+            usuario.Sobrenome = dados.Sobrenome;
+            usuario.Cpf = dados.Cpf;
+            usuario.Rg = dados.Rg;
+            usuario.Celular = dados.Celular;
+            usuario.DataNascimento = dados.DataNascimento;
+
+
             this._context.SaveChanges();
 
-            return Ok("Senha alterada com sucesso");
-        }
 
-        [HttpPut("Atualizar")]
-        public IActionResult AtualizarUser(DadosDto dados)
-        {
+            return Ok(new { msg = "Alterado com sucesso" });
 
-
-            return Ok();
         }
 
 

@@ -19,5 +19,8 @@ Add-migration  Atualizar
 
 Update-Database
 
+Add-Migration NovaColunaNumero -context PinguCheckInContext --por causa da referencia criada para as classes negocios devo falar o nome do contexto
+
+update-database -context PinguCheckInContext
 
 

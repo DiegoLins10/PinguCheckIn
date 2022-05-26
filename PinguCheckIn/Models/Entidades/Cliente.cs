@@ -19,6 +19,7 @@ namespace PinguCheckIn.Models.Entidades
         public string Cidade { get; set; }
         public string Uf { get; set; }
         public string Complemento { get; set; }
+        public long? Numero { get; set; }
 
         [ForeignKey("Usuario")]
         public int IdUsuario { get; set; }
