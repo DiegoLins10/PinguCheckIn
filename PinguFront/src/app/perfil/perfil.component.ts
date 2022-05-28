@@ -38,6 +38,7 @@ export class PerfilComponent implements OnInit {
 
     this.GetUser();
 
+
   }
   private validation(): void {
     const formOptions = { Validators: ValidatorField.MustMatch('senha', 'confirmeSenha') };

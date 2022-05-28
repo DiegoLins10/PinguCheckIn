@@ -1,6 +1,6 @@
 
 import { formatDate } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthenticationService } from '../authentication/authentication.service';
 import { Quarto } from './quarto.model';
@@ -22,6 +22,8 @@ export class QuartosComponent implements OnInit {
   diaHoje: any 
   de: any
   ate: any
+
+  @Output() quartoInfo = new EventEmitter();
 
   constructor(private authenticationService: AuthenticationService, private router: Router, private service: QuartosService) { }
 
@@ -52,6 +54,18 @@ export class QuartosComponent implements OnInit {
     });
   }
 
+  Reserva(item: any){
+
+    var dados = {
+      DataEntrada : this.de,
+      DataSaida : this.ate,
+      quarto: item
+    }
+
+    this.quartoInfo.emit(dados)
+
+  }
+
 
   getQuartosFiltro(){
     this.mensagem = []
@@ -60,6 +74,8 @@ export class QuartosComponent implements OnInit {
       DataEntrada: this.de,
       DataSaida: this.ate
     }
+
+    
 
     this.service.GetQuartosFilter(data).subscribe({
       next: res =>{

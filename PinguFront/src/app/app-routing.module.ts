@@ -6,14 +6,16 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { PerfilComponent } from './perfil/perfil.component';
 import { QuartosComponent } from './quartos/quartos.component';
+import { ReservaComponent } from './reserva/reserva.component';
 
 const routes: Routes = [
   {path: '', component: LoginComponent},
   {path: 'login', component: LoginComponent},
   {path: 'cadastro', component: CadastroComponent},
   {path: 'home', component: HomeComponent},
-  {path: 'quartos', component: QuartosComponent},
+  {path: 'quartos', component: ReservaComponent},
   {path: 'perfil', component: PerfilComponent},
+  // {path: 'reserva', component: ReservaComponent},
 ];
 
 @NgModule({

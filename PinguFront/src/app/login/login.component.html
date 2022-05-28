@@ -15,6 +15,13 @@
         <div class="form-group">
             <button type="button" class="btn btn-block create-account btn-secondary" routerLink="/cadastro">Cadastrar</button>
         </div>
+        <div class="centered" *ngIf="mensagem && mensagem.length > 0">
+            <div *ngFor="let msg of mensagem">
+                <div class="alert alert-danger"  role="alert">
+                    {{msg}}
+                </div>
+            </div>          
+        </div>
     </form>
     <div class="social-media">
         <h5>Siga nossas redes sociais</h5>

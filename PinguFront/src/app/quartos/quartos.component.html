@@ -6,7 +6,9 @@
     <div class="d-flex align-items-center mr-auto">
         <i class=" mr-3"></i>
         <div class="lh-100">
-            <h2 class="mb-0 "><i class="uil uil-bed-double"></i>
+            <h2 class="mb-0 ">
+                <!-- <i class="uil uil-bed-double"></i> -->
+                <i class="uil uil-bed"></i> 
                  Quartos</h2>
             <small>Abaixo você encontrará todos os quartos disponíveis.</small>
         </div>
@@ -21,7 +23,7 @@
     
     <div class="container text-left">
       <div class="row justify-content-center">
-        <div class="col-lg-7">
+        <div class="col-lg-6">
           <!-- <h2 class="mb-4 mt-2 text-center">Periodo de reserva</h2> -->
           <form action="#" class="row mt-4">
             <div class="col-md-6">
@@ -29,7 +31,6 @@
                     <label for="input_from">De</label>
                   <input type="date" [(ngModel)]="de" [ngModelOptions]="{standalone: true}" class="form-control" id="input_from" placeholder="Start Date" min="{{diaHoje}}">
                 </div>
-                <h3>{{de}}</h3>
             </div>
             <div class="col-md-6">
                 <div class="form-group">
@@ -38,12 +39,11 @@
                 </div>
             </div>
             <div class="col-md-6">
-                <button class="btn btn-primary" (click)="getQuartosFiltro()" [disabled]="de < diaHoje || ate < diaHoje || !de || !ate">Filtrar</button>
+                <button class="btn btn-primary" [disabled]="ate < de" (click)="getQuartosFiltro()" [disabled]="de < diaHoje || ate < diaHoje || !de || !ate">Filtrar</button>
             </div>
           </form>
         </div>
-      </div>
-          
+      </div>        
     </div>
   </div>
 
@@ -81,8 +81,9 @@
                     <li class="list-group-item">{{n}}</li>
                 </ul>
                 <div class="card-body">
-                    <a href="#" class="card-link">Reservar</a>
-                    <a href="#" class="card-link">Outro link</a>
+                    <a (click)="Reserva(item)" class="card-link">Reservar <i class="uil uil-check"></i></a>
+                    <!-- <a href="#" class="card-link">Outro link</a> -->
+                    
                 </div>
             </div>
         </div>          

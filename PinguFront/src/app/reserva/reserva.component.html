@@ -1,0 +1,4 @@
+<!-- <app-header></app-header> -->
+
+<app-quartos [hidden]="pagina != 'quarto'" (quartoInfo)="getDados($event)"></app-quartos>
+<app-pedido [hidden]="pagina != 'pedido'" (retornaDados)="AtualizaDadosPedido($event)" [dados] = "dadosReserva"></app-pedido>

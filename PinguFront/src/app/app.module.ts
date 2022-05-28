@@ -15,7 +15,9 @@ import { CadastroComponent } from './cadastro/cadastro.component';
 import { NgxMaskModule, IConfig } from 'ngx-mask';
 import { QuartosComponent } from './quartos/quartos.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { PerfilComponent } from './perfil/perfil.component'
+import { PerfilComponent } from './perfil/perfil.component';
+import { ReservaComponent } from './reserva/reserva.component';
+import { PedidoComponent } from './reserva/pedido/pedido.component';
 
 
 @NgModule({
@@ -29,6 +31,9 @@ import { PerfilComponent } from './perfil/perfil.component'
     CadastroComponent,
     QuartosComponent,
     PerfilComponent,
+    ReservaComponent,
+    PedidoComponent,
+
   ],
   imports: [
     BrowserModule,
