@@ -17,6 +17,8 @@ export class PedidoComponent implements OnInit {
   locale: any = 'en-US';
   diaHoje: any;
   diaHojeFormatado: any
+  diffDays: any;
+  valorTotal: any;
 
   constructor(private authenticationService: AuthenticationService, private router: Router, 
     private service: QuartosService) { }
@@ -33,6 +35,8 @@ export class PedidoComponent implements OnInit {
     }
     this.diaHoje = formatDate(this.myDate, this.format, this.locale);
     this.diaHojeFormatado = formatDate(this.myDate, 'dd-MM-yy', this.locale);
+    this.valorTotal = this.dados.quarto.valor;
+
   }
 
   Pagamento(){
@@ -41,5 +45,15 @@ export class PedidoComponent implements OnInit {
   }
 
 
+  DifData(){
+    var date1 = new Date(this.dados.DataEntrada);
+    var date2 = new Date(this.dados.DataSaida);
+    var timeDiff = Math.abs(date2.getTime() - date1.getTime());
+    this.diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24)); 
+
+    console.log(this.diffDays);
+    this.valorTotal = this.dados.quarto.valor * this.diffDays;
+
+  }
 
 }

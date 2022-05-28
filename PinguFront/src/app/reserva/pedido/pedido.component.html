@@ -1,5 +1,24 @@
 <app-header [quartos]="'active'"></app-header>
 <section class=" gradient-custom-2">
+  <div class="mt-5">
+    <div class="d-flex centered p-3 my-3 text-dark bg-color">
+       <div class="d-flex align-items-center mr-auto">
+           <i class=" mr-3"></i>
+           <div class="lh-100">
+               <h2 class="mb-0 ">
+                   <!-- <i class="uil uil-bed-double"></i> -->
+                   <i class="uil uil-bed"></i> 
+                    Detalhes</h2>
+               <small>Abaixo você encontrará todos os destalhes disponíveis.</small>
+           </div>
+       </div>
+       <div class="p-3 mr-3" >
+           <!-- <img class="logo" src="../../assets/pingu-logo.png" alt=""> -->
+       </div>  
+   </div>
+   </div>
+
+
     <div class="container py-5 h-100">
       <div class="row d-flex justify-content-center align-items-center h-100">
         <div class="col-md-10 col-lg-8 col-xl-6">
@@ -20,7 +39,7 @@
                 <div class="flex-fill">
                   <h5 class="bold">{{dados.quarto.nome}}</h5>
                   <p class="text-muted">{{dados.quarto.qtdCamas}}</p>
-                  <h4 class="mb-3"> {{dados.quarto.valor}} <span class="small text-muted"> via (PINGU) </span></h4>
+                  <h4 class="mb-3">R$ {{dados.quarto.valor.toFixed(2)}} /Dia<span class="small text-muted"> via (PINGU) </span></h4>
                   <p class="text-muted">Data atual: <span class="text-body">{{diaHojeFormatado}}</span></p>
                 </div>
                 <div>
@@ -41,23 +60,26 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="input_from">De</label>
-                      <input type="date" [(ngModel)]="dados.DataEntrada" [ngModelOptions]="{standalone: true}" class="form-control" id="input_from" placeholder="Start Date" min="">
+                      <input type="date" [(ngModel)]="dados.DataEntrada" [ngModelOptions]="{standalone: true}" class="form-control" id="input_from" placeholder="Start Date" min="diaHoje">
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="input_to">Até</label>
-                      <input type="date" [(ngModel)]="dados.DataSaida" [ngModelOptions]="{standalone: true}"  class="form-control" id="input_to" placeholder="End Date" min="">
+                      <input type="date" [(ngModel)]="dados.DataSaida" (change)="DifData()" [ngModelOptions]="{standalone: true}"  class="form-control" id="input_to" placeholder="End Date" min="">
                     </div>
                 </div>
                 <!-- <div class="col-md-6">
                     <button class="btn btn-primary">Filtrar</button>
                 </div> -->
+                <div class="col-md-6">
+                  <h4 class="">Total: <span class="small text-muted"> R$ {{valorTotal.toFixed(2)}}</span></h4>
+                </div>
               </form>
             </div>
             <div class="card-footer p-4">
               <div class="d-flex justify-content-between">
-                <h5 class="fw-normal mb-0"><a href="#!"><i class="uil uil-times"></i></a></h5>
+                <h5 class="fw-normal mb-0"><a href="/quartos"><i class="uil uil-times"></i></a></h5>
                 <div class="border-start h-100"></div>
                 <!-- <h5 class="fw-normal mb-0"><a href="/quartos">Trocar quarto</a></h5> -->
                 <div class="border-start h-100"></div>
