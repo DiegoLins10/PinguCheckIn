@@ -27,10 +27,23 @@ namespace PinguCheckIn.Models.Entidades
         public int IdQuarto { get; set; }
         public virtual Quarto Quarto { get; set; }
 
+        public int IdPagamento { get; set; }
 
         public Reserva()
         {
                 
+        }
+
+        public Reserva(DateTime dataEntrada, DateTime dataSaida, DateTime dataReserva, decimal valorTotal, int status, int idCliente, int idQuarto, int idPagamento)
+        {
+            DataEntrada = dataEntrada;
+            DataSaida = dataSaida;
+            DataReserva = dataReserva;
+            ValorTotal = valorTotal;
+            Status = status;
+            IdCliente = idCliente;
+            IdQuarto = idQuarto;
+            IdPagamento = idPagamento;
         }
     }
 }

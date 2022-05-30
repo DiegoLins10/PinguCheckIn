@@ -16,7 +16,7 @@ namespace PinguCheckIn.Negocio.Quartos
 
             var quartosNaoDisponiveis = (from reserva in this.Contexto.Reserva
                                       join quarto in this.Contexto.Quarto on reserva.IdQuarto equals quarto.IdQuarto
-                                      where reserva.DataEntrada <= filtro.DataSaida & filtro.DataEntrada <= reserva.DataSaida
+                                      where reserva.DataEntrada <= filtro.DataSaida && filtro.DataEntrada <= reserva.DataSaida
                                       select quarto).ToList();
 
            
@@ -49,6 +49,17 @@ namespace PinguCheckIn.Negocio.Quartos
             }
 
             return quartoList;
+        }
+
+        public bool QuartoDisponivel(FiltroQuarto filtro)
+        {
+            var quartosNaoDisponiveis = (from reserva in this.Contexto.Reserva
+                                         join quarto in this.Contexto.Quarto on reserva.IdQuarto equals quarto.IdQuarto
+                                         where quarto.IdQuarto == filtro.IdQuarto && reserva.DataEntrada <= filtro.DataSaida & filtro.DataEntrada <= reserva.DataSaida
+                                         select quarto).ToList();
+
+
+            return !quartosNaoDisponiveis.Any();
         }
          
     }

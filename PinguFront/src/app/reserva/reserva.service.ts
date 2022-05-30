@@ -1,26 +1,32 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs';
-import { Quarto } from './quarto.model';
 
 @Injectable({
   providedIn: 'root'
 })
-export class QuartosService {
+export class ReservaService {
 
   constructor(private httpClient: HttpClient) { }
 
   url = 'https://localhost:44354/';
 
-  GetQuartos(){
+  Disponivel(data: any){
     return this.httpClient
-    .get<any>(this.url + `Quartos`)
-    .pipe(map((body: any) => body));
-  }
-
-  GetQuartosFilter(data: any){
-    return this.httpClient
-    .post<any>(this.url + `Quartos/GetQuartosFiltro`, data)
+    .post<any>(this.url + `Quartos/QuartoDisponivel`, data)
     .pipe(map((body: any) => body));
   } 
+
+  Salvar(data: any){
+    return this.httpClient
+    .post<any>(this.url + `Reserva/salvar`, data)
+    .pipe(map((body: any) => body));
+  } 
+
+  GetEstados(){
+    return this.httpClient
+    .get<any>(this.url + `Reserva/estados`)
+    .pipe(map((body: any) => body));
+  } 
+
 }

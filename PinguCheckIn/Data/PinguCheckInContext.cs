@@ -28,6 +28,8 @@ namespace PinguCheckIn.Data
         public DbSet<Quarto> Quarto { get; set; }
         public DbSet<Cliente> Cliente { get; set; }
         public DbSet<Reserva> Reserva { get; set; }
+        public DbSet<Estados> Estados { get; set; }
+        public DbSet<Pagamento> Pagamentos { get; set; }
 
 
     }

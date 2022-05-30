@@ -1,0 +1,30 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace PinguCheckIn.Models.Dtos
+{
+    public class ReservaDto
+    {
+        public DateTime DataEntrada { get; set; }
+        public DateTime DataSaida { get; set; }
+        public int IdQuarto { get; set; }
+        public decimal ValorTotal { get; set; }
+        public string NomeCartao { get; set; }
+        public string NumeroCartao { get; set; }
+        public string Dataexp { get; set; }
+        public string Cvv { get; set; }
+        public bool Aceito { get; set; }
+        public string Nome { get; set; }
+        public string Sobrenome { get; set; }
+        public string Email { get; set; }
+        public string Endereco { get; set; }
+        public string Endereco2 { get; set; }
+        public string Pais { get; set; }
+        public string Estado { get; set; }
+        public string Cep { get; set; }
+        public int TipoPagamento { get; set; }
+        public int IdUsuario { get; set; }
+    }
+}

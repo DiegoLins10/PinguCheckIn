@@ -1,0 +1,190 @@
+<app-header [quartos]="'active'"></app-header>
+
+<div class="container">
+    <div class="py-5 text-center">
+      <!-- <img class="d-block mx-auto mb-4" src="../../assets/brand/bootstrap-solid.svg" alt="" width="72" height="72"> -->
+      <h2>Confirmação de pagamento <i class="uil uil-bill"></i></h2>
+      <!-- <p class="lead">Abaixo temos um exemplo de formulário construído com controles de formulário Bootstrap. Cada campo obrigatório possui um estado de validação que é ativado quando tenta-se enviar o formulário sem completá-lo.</p> -->
+    </div>
+
+    <div class="row">
+      <div class="col-md-4 order-md-2 mb-4">
+        <h4 class="d-flex justify-content-between align-items-center mb-3">
+          <span class="text-muted">Seu carrinho</span>
+          <span class="badge badge-secondary badge-pill"><i class="uil uil-usd-circle"></i></span>
+        </h4>
+        <ul class="list-group mb-3">
+          <li class="list-group-item d-flex justify-content-between lh-condensed">
+            <div>
+              <h6 class="my-0">{{dados.quarto.nome}}</h6>
+              <small class="text-muted">{{dados.quarto.qtdCamas}}<br></small>
+              <small *ngFor="let d of dados.quarto.beneficios" class="text-muted">{{d}}<br></small>
+            </div>
+            <span class="text-muted linha">R$ {{dados.valorTotal.toFixed(2)}}</span>
+          </li>         
+          <li class="list-group-item d-flex justify-content-between">
+            <span>Total (BRL)</span>
+            <strong>R${{dados.valorTotal.toFixed(2)}}</strong>
+          </li>
+        </ul>
+
+        <form class="card p-2">
+          <div class="input-group">
+            <input type="text" class="form-control" placeholder="Código promocional">
+            <div class="input-group-append">
+              <button type="submit" class="btn btn-secondary">Resgatar</button>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="col-md-8 order-md-1">
+        <h4 class="mb-3">Endereço de cobrança</h4>
+        <form class="needs-validation" [formGroup]="createForm" novalidate>
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label for="primeiroNome">Nome</label>
+              <input type="text" [(ngModel)]="nome" class="form-control" formControlName="nome" id="primeiroNome" placeholder="" value="" required>
+              <div class="invalid-feedback">
+                É obrigatório inserir um nome válido.
+              </div>
+            </div>
+            <div class="col-md-6 mb-3">
+              <label for="sobrenome">Sobrenome</label>
+              <input type="text" [(ngModel)]="sobrenome" formControlName="sobrenome" class="form-control" id="sobrenome" placeholder="" value="" required>
+              <div class="invalid-feedback">
+                É obrigatório inserir um sobre nome válido.
+              </div>
+            </div>
+          </div>
+
+
+          <div class="mb-3">
+            <label for="email">Email <span class="text-muted"></span></label>
+            <input type="email" [(ngModel)]="email" formControlName="email" class="form-control" id="email" placeholder="fulano@exemplo.com">
+            <div class="invalid-feedback">
+              Por favor, insira um endereço de e-mail válido, para atualizações de entrega.
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label for="endereco">Endereço</label>
+            <input type="text" [(ngModel)]="endereco" formControlName="endereco" class="form-control" id="endereco" placeholder="Rua dos bobos, nº 0" required>
+            <div class="invalid-feedback">
+              Por favor, insira seu endereço de entrega.
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label for="endereco2">Endereço 2 <span class="text-muted">(Opcional)</span></label>
+            <input type="text" [(ngModel)]="enderecoOpcional" [ngModelOptions]="{standalone: true}" class="form-control" id="endereco2" placeholder="Apartamento ou casa">
+          </div>
+
+          <div class="row">
+            <div class="col-md-5 mb-3">
+              <label for="pais">País</label>
+              <select [(ngModel)]="pais" formControlName="pais" class="custom-select d-block w-100" id="pais" required>
+                <option value="">Escolha...</option>
+                <option>Brasil</option>
+              </select>
+              <div class="invalid-feedback">
+                Por favor, escolha um país válido.
+              </div>
+            </div>
+            <div class="col-md-4 mb-3">
+              <label for="estado">Estado</label>
+              <select [(ngModel)]="estado" formControlName="estado" class="custom-select d-block w-100" id="estado" required>
+                <option value="" disabled>Escolha...</option>
+                <option *ngFor="let e of estados" value="{{e.idEstado}}" >{{e.nome}}</option>
+              </select>
+              <div class="invalid-feedback">
+                Por favor, insira um estado válido.
+              </div>
+            </div>
+            <div class="col-md-3 mb-3">
+              <label for="cep">CEP</label>
+              <input type="text" [(ngModel)]="cep" formControlName="cep" class="form-control" id="cep" placeholder="" required>
+              <div class="invalid-feedback">
+                É obrigatório inserir um CEP.
+              </div>
+            </div>
+          </div>         
+          <hr class="mb-4">
+
+          <h4 class="mb-3">Pagamento</h4>
+
+          <div class="d-block my-3">
+            <div class="custom-control custom-radio">
+              <input id="credito" name="paymentMethod" type="radio" class="custom-control-input" checked required>
+              <label class="custom-control-label" for="credito">Cartão de crédito</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label for="cc-nome">Nome no cartão</label>
+              <input type="text" [(ngModel)]="nomeCartao" formControlName="nomeCartao" class="form-control" id="cc-nome" placeholder="" required>
+              <small class="text-muted">Nome completo, como mostrado no cartão.</small>
+              <div class="invalid-feedback">
+                O nome que está no cartão é obrigatório.
+              </div>
+            </div>
+            <div class="col-md-6 mb-3">
+              <label for="cc-numero">Número do cartão de crédito</label>
+              <input type="text" [(ngModel)]="numeroCartao" formControlName="numeroCartao" class="form-control" id="cc-numero" maxlength="16" placeholder="" required>
+              <div class="invalid-feedback">
+                O número do cartão de crédito é obrigatório.
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-3 mb-3">
+              <label for="cc-expiracao">Data de expiração</label>
+              <input type="text" [(ngModel)]="dataExp" formControlName="dataExp" class="form-control" mask="00/00" id="cc-expiracao" placeholder="" required>
+              <div class="invalid-feedback">
+                Data de expiração é obrigatória.
+              </div>
+            </div>
+            <div class="col-md-3 mb-3">
+              <label for="cc-cvv">CVV</label>
+              <input type="text" [(ngModel)]="cvv" formControlName="cvv" class="form-control" maxlength="5" id="cc-cvv" placeholder="" required>
+              <div class="invalid-feedback">
+                Código de segurança é obrigatório.
+              </div>
+            </div>
+          </div>
+          <hr class="mb-4">
+          <div class="alert alert-info"  role="alert">
+            Em caso de cancelamento da reserva, eu declaro estar ciente que 30% do valor será debitado do meu cartão.
+            </div>
+          <div class="custom-control custom-checkbox">
+            <input class="form-check-input" type="checkbox" value="" formControlName="aceito" id="flexCheckChecked" [checked]="aceito" (change)='aceito=!aceito' required>
+            <label class="form-check-label" for="flexCheckChecked">
+                Aceito os termos acima.
+            </label>
+          </div>
+          <!-- <input type="checkbox" class=""> -->
+          <hr class="mb-4">
+          <div class="centered" *ngIf="mensagem && mensagem.length > 0">
+            <div *ngFor="let msg of mensagem">
+                <div class="alert alert-danger mt-4"  role="alert">
+                    {{msg}}
+                </div>
+            </div>          
+        </div>
+          <button class="btn btn-primary btn-lg btn-block" (click)="ValidarPagamento()" type="submit">Confirmar pagamento</button>
+          <!-- <hr class="mb-4"> -->
+          <button class="btn btn-primary btn-lg btn-block" (click)="voltarPedido()" type="submit">Voltar pedidos</button>
+        </form>
+      </div>
+    </div>
+
+
+    <footer class="my-5 pt-5 text-muted text-center text-small">
+      <p class="mb-1">&copy; 2022 PinguCheck</p>
+      <ul class="list-inline">
+        <li class="list-inline-item"><a href="#">Privacidade</a></li>
+        <li class="list-inline-item"><a href="#">Termos</a></li>
+        <li class="list-inline-item"><a href="#">Suporte</a></li>
+      </ul>
+    </footer>
+  </div>
+ 

@@ -18,6 +18,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PerfilComponent } from './perfil/perfil.component';
 import { ReservaComponent } from './reserva/reserva.component';
 import { PedidoComponent } from './reserva/pedido/pedido.component';
+import { PagamentoComponent } from './reserva/pagamento/pagamento.component';
+import { PerfilService } from './perfil/perfil.service';
+import { SucessoComponent } from './reserva/sucesso/sucesso.component';
 
 
 @NgModule({
@@ -33,6 +36,8 @@ import { PedidoComponent } from './reserva/pedido/pedido.component';
     PerfilComponent,
     ReservaComponent,
     PedidoComponent,
+    PagamentoComponent,
+    SucessoComponent,
 
   ],
   imports: [
@@ -46,7 +51,7 @@ import { PedidoComponent } from './reserva/pedido/pedido.component';
     NgxMaskModule.forRoot(),
     
   ],
-  providers: [],
+  providers: [PerfilService],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

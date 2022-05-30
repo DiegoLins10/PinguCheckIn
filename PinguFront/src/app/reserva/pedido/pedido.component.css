@@ -88,8 +88,7 @@
     }
 
     .point{
-        cursor: pointer;
-        
+        cursor: pointer;  
     }
 
     .point:hover{
@@ -104,6 +103,13 @@
         border-radius: 20px;
     }
     
+    .msg{
+        width: 45%;
+        border-radius: 20px;
+        margin: 0 auto !important;
+        margin-top: 5px !important;
+        float: none !important;
+    }
     
     .mb-8{
         margin-bottom:  6rem !important;
@@ -121,5 +127,8 @@
         background-color: #f2f2f2;
     }
     
+    .color{
+        color: #1266f1;
+    }
     
     

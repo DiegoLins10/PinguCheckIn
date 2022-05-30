@@ -1,4 +1,6 @@
 <!-- <app-header></app-header> -->
 
 <app-quartos [hidden]="pagina != 'quarto'" (quartoInfo)="getDados($event)"></app-quartos>
-<app-pedido *ngIf="pagina == 'pedido'" (retornaDados)="AtualizaDadosPedido($event)" [dados] = "dadosReserva"></app-pedido>
+<app-pedido *ngIf="pagina == 'pedido'" (retornaDados)="AtualizaDadosPedido($event)" [dados]="dadosReserva"></app-pedido>
+<app-pagamento [hidden]="pagina != 'pagamento'" [dados]="dadosReserva" (volta)="voltarPedidos()" (retornaDados)="Finish()" ></app-pagamento>
+<app-sucesso *ngIf="pagina == 'sucesso'" ></app-sucesso>

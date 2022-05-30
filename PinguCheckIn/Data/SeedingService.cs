@@ -48,12 +48,49 @@ namespace PinguCheckIn.Data
 
                 _context.Cliente.AddRange(c1, c2, c3);
             }
-            
+
+            if (!_context.Estados.Any())
+
+            {
+                List<Estados> list = new List<Estados>();
+
+                list.Add( new Estados("Acre", "AC"));
+                list.Add( new Estados("Alagoas", "AL"));
+                list.Add( new Estados("Amazonas", "AM"));
+                list.Add( new Estados("Amapá", "AP"));
+                list.Add( new Estados("Bahia", "BA"));
+                list.Add( new Estados("Ceará", "CE"));
+                list.Add( new Estados("Distrito Federal", "DF"));
+                list.Add( new Estados("Espírito Santo", "ES"));
+                list.Add( new Estados("Goiás", "GO"));
+                list.Add( new Estados( "Maranhão", "MA"));
+                list.Add( new Estados( "Minas Gerais", "MG"));
+                list.Add( new Estados( "Mato Grosso do Sul", "MS"));
+                list.Add( new Estados( "Mato Grosso", "MT"));
+                list.Add( new Estados( "Pará", "PA"));
+                list.Add( new Estados( "Paraíba", "PB"));
+                list.Add( new Estados( "Pernambuco", "PE"));
+                list.Add( new Estados( "Piauí", "PI"));
+                list.Add( new Estados( "Paraná", "PR"));
+                list.Add( new Estados( "Rio de Janeiro", "RJ"));
+                list.Add( new Estados( "Rio Grande do Norte", "RN"));
+                list.Add( new Estados( "Rondônia", "RO"));
+                list.Add( new Estados( "Roraima", "RR"));
+                list.Add( new Estados( "Rio Grande do Sul", "RS"));
+                list.Add( new Estados( "Santa Catarina", "SC"));
+                list.Add( new Estados( "Sergipe", "SE"));
+                list.Add( new Estados( "São Paulo", "SP"));
+                list.Add( new Estados( "Tocantins", "TO"));
+
+                _context.AddRange(list);
+
+            }
+
 
 
 
             /* adicionando no banco de dados usando entity framework*/
-            
+
 
             _context.SaveChanges();
         }

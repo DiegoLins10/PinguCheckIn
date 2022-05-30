@@ -20,7 +20,7 @@
 
 
     <div class="container py-5 h-100">
-      <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">     
         <div class="col-md-10 col-lg-8 col-xl-6">
           <div class="card card-stepper" style="border-radius: 16px;">
             <div class="card-header p-4">
@@ -30,7 +30,7 @@
                   <!-- <p class="text-muted mb-0"> Place On <span class="fw-bold text-body">12,March 2019</span> </p> -->
                 </div>
                 <div>
-                  <h6 class="mb-0"> <a href="#">Detalhes</a> </h6>
+                  <h6 class="mb-0 color"> <a>Detalhes</a> </h6>
                 </div>
               </div>
             </div>
@@ -60,13 +60,13 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="input_from">De</label>
-                      <input type="date" [(ngModel)]="dados.DataEntrada" [ngModelOptions]="{standalone: true}" class="form-control" id="input_from" placeholder="Start Date" min="diaHoje">
+                      <input type="date" [(ngModel)]="dados.DataEntrada" [ngModelOptions]="{standalone: true}" class="form-control" id="input_from" placeholder="Start Date" min="{{diaHoje}}">
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="input_to">Até</label>
-                      <input type="date" [(ngModel)]="dados.DataSaida" (change)="DifData()" [ngModelOptions]="{standalone: true}"  class="form-control" id="input_to" placeholder="End Date" min="">
+                      <input type="date" [(ngModel)]="dados.DataSaida" (change)="DifData()" [ngModelOptions]="{standalone: true}"  class="form-control" id="input_to" placeholder="End Date" min="{{dados.DataEntrada}}">
                     </div>
                 </div>
                 <!-- <div class="col-md-6">
@@ -76,6 +76,20 @@
                   <h4 class="">Total: <span class="small text-muted"> R$ {{valorTotal.toFixed(2)}}</span></h4>
                 </div>
               </form>
+              <div class="mt-2" *ngIf="mensagem && mensagem.length > 0">
+                <div *ngFor="let msg of mensagem">
+                    <div class="alert alert-info"  role="alert">
+                        {{msg}}
+                    </div>
+                </div>          
+            </div>
+              <div class="mt-2" *ngIf="mensagemErro && mensagemErro.length > 0">
+                <div *ngFor="let msg of mensagemErro">
+                    <div class="alert alert-danger"  role="alert">
+                        {{msg}}
+                    </div>
+                </div>          
+            </div>
             </div>
             <div class="card-footer p-4">
               <div class="d-flex justify-content-between">
@@ -93,5 +107,12 @@
           </div>
         </div>
       </div>
+      <!-- <div class="mt-2 msg" *ngIf="mensagem && mensagem.length > 0">
+        <div *ngFor="let msg of mensagem">
+            <div class="alert alert-danger"  role="alert">
+                {{msg}}
+            </div>
+        </div>          
+    </div> -->
     </div>
   </section>

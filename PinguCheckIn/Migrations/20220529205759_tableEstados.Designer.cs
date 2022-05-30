@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PinguCheckIn.Data;
 
 namespace PinguCheckIn.Migrations
 {
     [DbContext(typeof(PinguCheckInContext))]
-    partial class PinguCheckInContextModelSnapshot : ModelSnapshot
+    [Migration("20220529205759_tableEstados")]
+    partial class tableEstados
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -82,63 +84,6 @@ namespace PinguCheckIn.Migrations
                     b.ToTable("Estados");
                 });
 
-            modelBuilder.Entity("PinguCheckIn.Models.Entidades.Pagamento", b =>
-                {
-                    b.Property<int>("IdPagamento")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<bool>("Aceito")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("Cep")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Cvv")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Dataexp")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Email")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Endereco")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Endereco2")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Estado")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("IdCliente")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Nome")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("NomeCartao")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("NumeroCartao")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Pais")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Sobrenome")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("TipoPagamento")
-                        .HasColumnType("int");
-
-                    b.HasKey("IdPagamento");
-
-                    b.ToTable("Pagamentos");
-                });
-
             modelBuilder.Entity("PinguCheckIn.Models.Entidades.Quarto", b =>
                 {
                     b.Property<int>("IdQuarto")
@@ -189,9 +134,6 @@ namespace PinguCheckIn.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<int>("IdCliente")
-                        .HasColumnType("int");
-
-                    b.Property<int>("IdPagamento")
                         .HasColumnType("int");
 
                     b.Property<int>("IdQuarto")

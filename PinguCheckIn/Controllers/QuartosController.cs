@@ -81,6 +81,23 @@ namespace PinguCheckIn.Controllers
             }
             
         }
-            
+
+        [HttpPost("QuartoDisponivel")]
+        public IActionResult QuartoDisponivel(FiltroQuarto filtro)
+        {
+            try
+            {
+                bool quartoDisponivel = new QuartoNegocio().QuartoDisponivel(filtro);
+
+
+                return Ok(new { disponivel = quartoDisponivel });
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+
+        }
+
     }
 }
