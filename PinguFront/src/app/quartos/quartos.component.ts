@@ -46,12 +46,14 @@ export class QuartosComponent implements OnInit {
   getQuartos(){
     this.mensagem = []
 
-    this.service.GetQuartos().subscribe(res =>{
+    this.service.GetQuartos().subscribe({
+      next: res =>{
       this.quartos = res
-    }, error =>{
+    },error: error =>{
       this.mensagem.push(error.error)
       console.log(error);
-    });
+    }
+  });
   }
 
   Reserva(item: any){
