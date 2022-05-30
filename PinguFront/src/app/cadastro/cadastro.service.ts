@@ -10,7 +10,7 @@ export class CadastroService {
 
   constructor(private httpClient: HttpClient) { }
 
-  url = 'https://localhost:44354/';
+  url = 'https://pinguapi.azurewebsites.net/';
 
   CadastrarUsuario(usuario: Cadastro){
     return this.httpClient

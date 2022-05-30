@@ -22,7 +22,7 @@ const credentialsKey = 'credentials';
 export class AuthenticationService{
 
     _credentials: Credentials | null;
-     url = 'https://localhost:44354/';
+     url = 'https://pinguapi.azurewebsites.net/';
 
     constructor(private httpClient: HttpClient, private router: Router) {
         const savedCredentials = sessionStorage.getItem(credentialsKey) || localStorage.getItem(credentialsKey);

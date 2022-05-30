@@ -2,3 +2,5 @@ Versões usadas no projeto
 
 Node js :v16.14.0
 .Net: 5.0
+
+https://pingucheck.netlify.app/

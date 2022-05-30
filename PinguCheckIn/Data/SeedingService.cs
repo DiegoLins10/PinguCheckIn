@@ -25,6 +25,7 @@ namespace PinguCheckIn.Data
                 Usuario us2 = new Usuario("Vinicius.Oliveira@fatec.sp.gov.br", "teste10", "Vinicius", " Oliveira", "24033332813", "180337808", "1166667779", DateTime.Now, true);
                 Usuario us3 = new Usuario("Nathan@fatec.sp.gov.br", "teste10", "Nathan", "Silva", "24444232813", "180222808", "11966669239", DateTime.Now, true);
                 _context.Usuario.AddRange(us1, us2, us3);
+                _context.SaveChanges();
             }
             if (!_context.Quarto.Any())
             {
@@ -39,14 +40,16 @@ namespace PinguCheckIn.Data
                 Quarto q9 = new Quarto("Premium Room Queen", "22 m²", "1 cama Queen", "Wi-Fi grátis;Buffet de café da manhã", 436.00, "Acomoda 2", "/assets/imagens-quartos/premium room queen.png");
 
                 _context.Quarto.AddRange(q1, q2, q3, q4, q5, q6, q7, q8, q9);
+                _context.SaveChanges();
             }
             if (!_context.Cliente.Any())
             {
-                Cliente c1 = new Cliente(null, null, null, null, null, null, null, null, 1);
-                Cliente c2 = new Cliente(null, null, null, null, null, null, null, null, 2);
-                Cliente c3 = new Cliente(null, null, null, null, null, null, null, null, 3);
+                Cliente c1 = new Cliente(null, null, null, null, null, null, null, null, 4);
+                Cliente c2 = new Cliente(null, null, null, null, null, null, null, null, 5);
+                Cliente c3 = new Cliente(null, null, null, null, null, null, null, null, 6);
 
                 _context.Cliente.AddRange(c1, c2, c3);
+                _context.SaveChanges();
             }
 
             if (!_context.Estados.Any())
@@ -83,6 +86,7 @@ namespace PinguCheckIn.Data
                 list.Add( new Estados( "Tocantins", "TO"));
 
                 _context.AddRange(list);
+                _context.SaveChanges();
 
             }
 
@@ -92,7 +96,7 @@ namespace PinguCheckIn.Data
             /* adicionando no banco de dados usando entity framework*/
 
 
-            _context.SaveChanges();
+
         }
     }
 }

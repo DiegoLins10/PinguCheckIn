@@ -10,7 +10,7 @@ export class PerfilService {
 
   constructor(private httpClient: HttpClient) { }
 
-  url = 'https://localhost:44354/';
+  url = 'https://pinguapi.azurewebsites.net/';
   urlViaCep = 'https://viacep.com.br/ws/'
 
   GetUsuario(idUsuario: any){
