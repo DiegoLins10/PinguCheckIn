@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PinguCheckIn.Models.Enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -26,5 +27,15 @@ namespace PinguCheckIn.Models.Dtos
         public string Cep { get; set; }
         public int TipoPagamento { get; set; }
         public int IdUsuario { get; set; }
+        public int IdReserva { get; set; }
+        public Status Status { get; set; }
+        public string StatusString { get; set; }
+
+        public string Camas { get; set; }
+
+        public double Valor { get; set; }
+        public string Foto { get; set; }
+
+        public string Error { get; set; }
     }
 }

@@ -1,0 +1,70 @@
+<app-header [historico]="'active'"></app-header>
+
+<!-- TITULO  -->
+<div class="mt-5 mb-5">
+    <div class="d-flex centered p-3 my-3 text-dark bg-color">
+        <div class="d-flex align-items-center mr-auto">
+            <i class=" mr-3"></i>
+            <div class="lh-100">
+                <h2 class="mb-0 ">
+                    <!-- <i class="uil uil-bed-double"></i> -->
+                    <i class="uil uil-history"></i>
+                    Histórico
+                </h2>
+                <small>Abaixo você encontrará todas suas transações.</small>
+            </div>
+        </div>
+        <div class="p-3 mr-3">
+            <!-- <img class="logo" src="../../assets/pingu-logo.png" alt=""> -->
+        </div>
+    </div>
+</div>
+
+<div class="centered" *ngIf="mensagem && mensagem.length > 0">
+    <div *ngFor="let msg of mensagem">
+        <div class="alert alert-danger mt-4"  role="alert">
+            {{msg}}
+        </div>
+    </div>          
+</div>
+
+
+<div class="centered">
+    
+    <div class="card h-50 mb-5" *ngFor="let h of historico">
+        <h5 class="card-header">Status: <span class="c-pill c-pill--{{h.statusString}}">{{h.statusString}}</span> #{{h.idReserva}}</h5> 
+        <!-- <span class="c-pill c-pill--success">Yellow indicator</span>
+        <span class="c-pill c-pill--warning">Green indicator</span>       -->
+        <div class="card-body">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-8">
+                        <div class="mt-4">
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">Nome quarto: {{h.nome}}</li>
+                                <li class="list-group-item">Valor: R$ {{h.valor.toFixed(2)}} /Dia</li>
+                                <li class="list-group-item">Camas: {{h.camas}}</li>
+                                <li class="list-group-item">Entrada/Saida: {{h.dataEntrada}} / {{h.dataSaida}}</li>
+                                <li class="list-group-item">Valor total: {{h.valorTotal.toFixed(2)}}</li>
+                            </ul>
+                        </div>                     
+                    </div>
+                    <div class="col-sm-4">
+                        <img class="img-thumbnail" src="{{h.foto}}" alt="">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-2">
+                        <a (click)="Cancelar(h.idReserva)" class="btn btn-primary mt-3 point">Cancelar reserva</a>   
+                    </div>
+                    <div class="col-sm-8">
+                        <div *ngIf="h.status == 1" class="alert alert-info mt-2" role="alert">
+                            Em caso de cancelamento da reserva, eu declaro estar ciente que 30% do valor será debitado do meu cartão.
+                        </div>
+                    </div> 
+                </div>
+            </div>
+      
+        </div>
+    </div>
+</div>

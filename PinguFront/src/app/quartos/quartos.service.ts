@@ -23,4 +23,16 @@ export class QuartosService {
     .post<any>(this.url + `Quartos/GetQuartosFiltro`, data)
     .pipe(map((body: any) => body));
   } 
+
+  GetHistorico(idUsuario: any){
+    return this.httpClient
+    .get<any>(this.url + `Historico/GetHistorico?idUsuario=${idUsuario}`)
+    .pipe(map((body: any) => body));
+  }
+
+  GetCancelar(idReserva: any){
+    return this.httpClient
+    .get<any>(this.url + `Historico/GetCancelar?idReserva=${idReserva}`)
+    .pipe(map((body: any) => body));
+  }
 }

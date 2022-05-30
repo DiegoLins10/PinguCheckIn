@@ -21,6 +21,7 @@ import { PedidoComponent } from './reserva/pedido/pedido.component';
 import { PagamentoComponent } from './reserva/pagamento/pagamento.component';
 import { PerfilService } from './perfil/perfil.service';
 import { SucessoComponent } from './reserva/sucesso/sucesso.component';
+import { HistoricoComponent } from './historico/historico.component';
 
 
 @NgModule({
@@ -38,6 +39,7 @@ import { SucessoComponent } from './reserva/sucesso/sucesso.component';
     PedidoComponent,
     PagamentoComponent,
     SucessoComponent,
+    HistoricoComponent,
 
   ],
   imports: [

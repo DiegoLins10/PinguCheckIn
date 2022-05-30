@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
+
+.text-success {
+    color: #10c469;
+}
+.text-info {
+    color: #62c9e8;
+}
+.text-warning {
+    color: #FFC107;
+}
+.text-danger {
+    color: #ff5b5b;
+}
+.centered {
+    margin: 0 auto !important;
+    float: none !important;
+    width: 70%; 
+    border-radius: 20px;
+}
+
+.bg-color{
+    background-color: #f2f2f2;
+}
+
+.c-pill--Reservado {
+    background: #b4eda0; }
+    .c-pill--Reservado:before {
+      background: #6BC167; }
+.c-pill--Finalizada {
+    background: #ffebb6; }
+    .c-pill--Finalizada:before {
+      background: #ffc400; }
+.c-pill--Cancelada {
+    background: #ffd5d1; }
+.c-pill--Cancelada:before {
+      background: #ff4436; }
+
+
+      .c-pill {       
+        align-items: center;
+        font-family: "Open Sans", Arial, Verdana, sans-serif;
+        font-weight: bold;
+        font-size: 13px;
+        /* display: inline-block; */
+        height: 100%;
+        white-space: nowrap;
+        width: auto;
+      
+        position: relative;
+        border-radius: 100px;
+        line-height: 1;
+        overflow: hidden;
+        padding: 0px 12px 0px 20px;
+        text-overflow: ellipsis;
+        line-height: 1.25rem;
+        color: #595959;
+          
+        word-break: break-word;
+        margin-top: -5;
+      
+               
+      }      
+      .before {
+        border-radius: 50%;
+        content: '';
+        height: 10px;
+        left: 6px;
+        margin-top: -5px;
+        position: absolute;
+        top: 50%;
+        width: 10px;
+      }
+
+      .inline{
+        display: inline-block;
+
+      }
+
+      .point{
+        cursor: pointer;
+      }
