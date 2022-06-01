@@ -29,6 +29,7 @@ namespace PinguCheckIn.Negocio.Historico
                                   DataEntrada = r.DataEntrada,
                                   DataSaida = r.DataSaida,
                                   Foto = q.Imagem,
+                                  DataReserva = r.DataReserva
                               }
                           ).ToList();
 

@@ -27,12 +27,15 @@
         </div>
     </div>          
 </div>
+<div class="">
+    <app-loader [isLoading]="Isloading" message="Carregando..."></app-loader>
+ </div>
 
 
 <div class="centered">
     
     <div class="card h-50 mb-5" *ngFor="let h of historico">
-        <h5 class="card-header">Status: <span class="c-pill c-pill--{{h.statusString}}">{{h.statusString}}</span> #{{h.idReserva}}</h5> 
+        <h5 class="card-header">Status: <span class="c-pill c-pill--{{h.statusString}}">{{h.statusString}}</span> #{{h.idReserva}} - Reservado em: {{h.dataReserva}}</h5> 
         <!-- <span class="c-pill c-pill--success">Yellow indicator</span>
         <span class="c-pill c-pill--warning">Green indicator</span>       -->
         <div class="card-body">
@@ -54,7 +57,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-sm-2">
+                    <div class="col-sm-2" *ngIf="h.status == 1">
                         <a (click)="Cancelar(h.idReserva)" class="btn btn-primary mt-3 point">Cancelar reserva</a>   
                     </div>
                     <div class="col-sm-8">

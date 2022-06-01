@@ -1,0 +1,43 @@
+.loader {
+    border: 5px solid #c5c5c5;
+    border-radius: 50%;
+    border-top: 5px solid #5791ff;
+    width: 26px;
+    height: 26px;
+    animation: spin 1s linear infinite;
+    margin-right: 10px;
+  }
+
+
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  h5 {
+    font-size: 12px;
+    margin-bottom: 0;
+    text-transform: uppercase;
+    color: #787878;
+    font-family: 'abelregular', Arial, Helvetica, sans-serif;
+}
+
+.d-f {
+    display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox;      /* TWEENER - IE 10 */
+    display: -webkit-flex;     /* NEW - Chrome */
+    display: flex;             /* NEW, Spec - Opera 12.1, Firefox 20+ */
+}
+
+.ai-c {
+    align-items: center;
+}
+
+.jc-c {
+    justify-content: center;
+}
+
+.mt {
+    margin-top: 20px;
+}

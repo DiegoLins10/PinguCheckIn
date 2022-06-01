@@ -18,6 +18,7 @@ export class HistoricoComponent implements OnInit {
   myDate: any = new Date();
   locale: any = 'en-US';
   mensagem: any;
+  Isloading: any;
 
   constructor(private authenticationService: AuthenticationService, private router: Router, private service: QuartosService) { }
 
@@ -34,22 +35,26 @@ export class HistoricoComponent implements OnInit {
 
   GetHistorico(){
     this.mensagem = []
+    this.Isloading = true;
     this.service.GetHistorico(this.authenticationService._credentials?.idUsuario).pipe(
       finalize(() =>{
         this.historico.forEach((element: any) => {
           element.dataEntrada = formatDate(element.dataEntrada, this.format, this.locale);
           element.dataSaida = formatDate(element.dataSaida, this.format, this.locale);
+          element.dataReserva = formatDate(element.dataReserva, this.format, this.locale);
         });
       })
     )
     .subscribe({
       next: res => {
         this.historico = res; 
-        console.log(this.historico);            
+        console.log(this.historico);  
+        this.Isloading = false;          
       },
       error: error =>{
         console.log(error);
         this.mensagem.push(error.error);
+        this.Isloading = false;
       }
     })
   }

@@ -24,6 +24,8 @@ export class PerfilComponent implements OnInit {
   locale: any = 'en-US';
   data: any;
 
+  Isloading: any;
+
   constructor(private fb: FormBuilder, private service: PerfilService, private authenticationService: AuthenticationService, private router: Router) { }
 
   ngOnInit(): void {
@@ -79,16 +81,20 @@ export class PerfilComponent implements OnInit {
   Salvar(){
     this.mensagem = []
     this.sucesso =[]
+    this.Isloading = true;
     if(this.form.invalid){
       this.mensagem.push("Erro no formulário, Verifique seus dados")
+      this.Isloading = false;
     }
     else{
       this.service.Atualizar(this.usuario).subscribe({
         next: res => {
           this.sucesso.push(res.msg);  
+          this.Isloading = false;
         },
         error: error =>{
           this.mensagem.push(error.error);
+          this.Isloading = false;
         }
       })
     }
@@ -102,17 +108,20 @@ export class PerfilComponent implements OnInit {
 
 
 GetUser(){
+    this.Isloading = true;
     this.service.GetUsuario(this.authenticationService._credentials?.idUsuario).subscribe({
       next: res => { 
         this.usuario = res
         console.log(this.usuario);
         this.usuario.DataNascimento = formatDate(this.usuario.dataNascimento, this.format, this.locale);
         console.log(this.usuario.dataNascimento);
+        this.Isloading = false;
         // this.usuario.complemento = "cu";
       },
       error: error => {         
         this.mensagem.push(error.error);
         console.log(error);
+        this.Isloading = false;
       }
     });
   }

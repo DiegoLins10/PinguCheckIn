@@ -24,6 +24,7 @@ export class PedidoComponent implements OnInit {
   mensagem: any;
   disponivel: any;
   mensagemErro: any;
+  Isloading: any
 
   constructor(private authenticationService: AuthenticationService, private router: Router,
     private service: QuartosService, private reservaService: ReservaService) { }
@@ -44,19 +45,22 @@ export class PedidoComponent implements OnInit {
   }
 
   Pagamento() {
-
+    this.Isloading = true;
     if((this.mensagemErro && this.mensagemErro.length > 0) || (this.mensagem && this.mensagem.length > 0)){
       this.mensagemErro.push("Não foi possivel prosseguir, existem erros")
+      this.Isloading = false;
     }
     else{
       this.dados.valorTotal = this.valorTotal;
       this.retornaDados.emit(this.dados);
+      this.Isloading = false;
     }
 
   }
 
 
   DifData() {
+    this.Isloading = true;
     this.mensagem = []
     this.mensagemErro = []
 
@@ -84,21 +88,25 @@ export class PedidoComponent implements OnInit {
     
             console.log(this.diffDays);
             this.valorTotal = this.dados.quarto.valor + (this.dados.quarto.valor * this.diffDays);
+            this.Isloading = false;
           }
           else if(this.disponivel == false){
             this.valorTotal = this.dados.quarto.valor;
             this.mensagemErro.push("Esse quarto não está disponivel na data escolhida.")
+            this.Isloading = false;
           } 
         },
         error: error =>{
           console.log(error);
           //this.mensagemErro.push(error.message)
+          this.Isloading = false;
         }
       });       
     }
     else {
       this.valorTotal = this.dados.quarto.valor;
       this.mensagem.push("Escolha uma data para prosseguir.")
+      this.Isloading = false;
     }
   }
 

@@ -170,6 +170,9 @@
                 </div>
             </div>          
         </div>
+        <div class="mb-3">
+          <app-loader [isLoading]="Isloading" message="Carregando..."></app-loader>
+       </div>
           <button class="btn btn-primary btn-lg btn-block" (click)="ValidarPagamento()" type="submit">Confirmar pagamento</button>
           <!-- <hr class="mb-4"> -->
           <button class="btn btn-primary btn-lg btn-block" (click)="voltarPedido()" type="submit">Voltar pedidos</button>

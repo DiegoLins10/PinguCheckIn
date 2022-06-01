@@ -22,6 +22,7 @@ export class QuartosComponent implements OnInit {
   diaHoje: any 
   de: any
   ate: any
+  Isloading: any;
 
   @Output() quartoInfo = new EventEmitter();
 
@@ -45,13 +46,15 @@ export class QuartosComponent implements OnInit {
 
   getQuartos(){
     this.mensagem = []
-
+    this.Isloading = true;
     this.service.GetQuartos().subscribe({
       next: res =>{
       this.quartos = res
+      this.Isloading = false;
     },error: error =>{
       this.mensagem.push(error.error)
       console.log(error);
+      this.Isloading = false;
     }
   });
   }

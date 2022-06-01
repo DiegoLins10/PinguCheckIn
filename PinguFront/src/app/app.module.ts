@@ -22,6 +22,7 @@ import { PagamentoComponent } from './reserva/pagamento/pagamento.component';
 import { PerfilService } from './perfil/perfil.service';
 import { SucessoComponent } from './reserva/sucesso/sucesso.component';
 import { HistoricoComponent } from './historico/historico.component';
+import { LoaderComponent } from './reutilizaveis/loader/loader.component';
 
 
 @NgModule({
@@ -40,6 +41,7 @@ import { HistoricoComponent } from './historico/historico.component';
     PagamentoComponent,
     SucessoComponent,
     HistoricoComponent,
+    LoaderComponent,
 
   ],
   imports: [

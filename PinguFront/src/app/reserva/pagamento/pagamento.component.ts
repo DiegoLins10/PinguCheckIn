@@ -41,6 +41,7 @@ export class PagamentoComponent implements OnInit {
   mensagem: any;
   estados: any;
   sucesso: any;
+  Isloading: any
 
   createForm! :FormGroup;
 
@@ -103,8 +104,10 @@ export class PagamentoComponent implements OnInit {
   }
 
   ValidarPagamento(){
+    this.Isloading = true;
     this.mensagem = [];
     if(this.createForm.invalid){
+      this.Isloading = false;
       return 
     }
     else{
@@ -136,9 +139,11 @@ export class PagamentoComponent implements OnInit {
         next: res => {
           this.mensagem.push(res.msg);
           this.retornaDados.emit();
+          this.Isloading = false;
         },
         error: error => {
           this.mensagem.push(error.message);
+          this.Isloading = false;
         }
       })    
       

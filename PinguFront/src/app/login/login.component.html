@@ -15,6 +15,10 @@
         <div class="form-group">
             <button type="button" class="btn btn-block create-account btn-secondary" routerLink="/cadastro">Cadastrar</button>
         </div>
+        <div class="">
+            <app-loader [isLoading]="Isloading" message="Carregando..."></app-loader>
+         </div>
+
         <div class="centered" *ngIf="mensagem && mensagem.length > 0">
             <div *ngFor="let msg of mensagem">
                 <div class="alert alert-danger"  role="alert">

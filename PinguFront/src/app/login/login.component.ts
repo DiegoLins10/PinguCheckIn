@@ -14,6 +14,7 @@ export class LoginComponent implements OnInit {
   loading!: boolean;
   autenticado: any;
   mensagem: any;
+  Isloading: any;
 
   constructor(private authenticationService: AuthenticationService, private router: Router) { }
 
@@ -27,7 +28,7 @@ export class LoginComponent implements OnInit {
   }
 
   login(){
-    this.loading = true;
+    this.Isloading = true;
     this.mensagem = [];
     var exp = {
       email: this.user,
@@ -43,11 +44,14 @@ export class LoginComponent implements OnInit {
     }, error =>{
       if(error.error.message){
         this.mensagem.push(error.error.message);
+        this.Isloading = false;
       }
       else{
         this.mensagem.push(error.message);
+        this.Isloading = false;
       }
       console.log(error)
+      this.Isloading = false;
     });
   }
 

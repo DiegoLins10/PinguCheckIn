@@ -37,5 +37,6 @@ namespace PinguCheckIn.Models.Dtos
         public string Foto { get; set; }
 
         public string Error { get; set; }
+        public DateTime DataReserva { get; set; }
     }
 }
