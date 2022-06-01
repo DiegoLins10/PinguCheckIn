@@ -12,6 +12,7 @@ export interface Credentials {
     nome: string;
     sobrenome: string;
     idUsuario: any;
+    funcionario: any;
   }
 
 const credentialsKey = 'credentials';
@@ -80,7 +81,8 @@ login(credenciais: any){
             nome: body.body.user.nome,
             sobrenome: body.body.user.sobrenome,
             token: body.body.token,
-            idUsuario: body.body.user.idUsuario
+            idUsuario: body.body.user.idUsuario,
+            funcionario: body.body.user.funcionario,
           }
         this.setCredentials(cred, false)
         return body;

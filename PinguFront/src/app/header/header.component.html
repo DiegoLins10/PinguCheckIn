@@ -9,15 +9,19 @@
       <li class="nav-item {{home}}">
         <a class="nav-link" href="/">Tela inicial <span class="sr-only">(current)</span></a>
       </li>
-      <li class="nav-item {{quartos}}">
+      <li *ngIf="!funcionario" class="nav-item {{quartos}}">
         <a class="nav-link" href="/quartos">Quartos</a>
       </li>
-      <li class="nav-item {{historico}}">
+      <li *ngIf="!funcionario" class="nav-item {{historico}}">
         <a class="nav-link" href="/historico">Historico</a>
+      </li>
+      <li *ngIf="funcionario" class="nav-item {{reservas}}">
+        <a class="nav-link" href="adm/reservas">Reservas</a>
       </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">
-      <a class="navbar-brand" routerLink="/perfil">{{nome}}</a>
+      <a  *ngIf="!funcionario" class="navbar-brand" routerLink="/perfil">{{nome}}</a>
+      <a *ngIf="funcionario" class="navbar-brand" routerLink="/perfil">ADM - {{nome}}</a>
       <a class="navbar-brand click" href="/" (click)="logout()">
         <i class="uil uil-signout"></i> Logout
       </a>

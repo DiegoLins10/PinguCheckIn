@@ -23,6 +23,7 @@ import { PerfilService } from './perfil/perfil.service';
 import { SucessoComponent } from './reserva/sucesso/sucesso.component';
 import { HistoricoComponent } from './historico/historico.component';
 import { LoaderComponent } from './reutilizaveis/loader/loader.component';
+import { AdministradorComponent } from './administrador/administrador.component';
 
 
 @NgModule({
@@ -42,6 +43,7 @@ import { LoaderComponent } from './reutilizaveis/loader/loader.component';
     SucessoComponent,
     HistoricoComponent,
     LoaderComponent,
+    AdministradorComponent,
 
   ],
   imports: [

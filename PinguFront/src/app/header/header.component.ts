@@ -11,9 +11,11 @@ export class HeaderComponent implements OnInit {
 
   autenticado: any
   nome: any;
+  funcionario: any
   @Input() home: any
   @Input() quartos: any
   @Input() historico: any
+  @Input() reservas: any
 
   constructor(private authenticationService: AuthenticationService) { }
 
@@ -22,6 +24,7 @@ export class HeaderComponent implements OnInit {
     console.log(this.autenticado)
     this.nome = this.authenticationService.credentials?.nome
     console.log(this.nome)
+    this.funcionario = this.authenticationService._credentials?.funcionario;
   }
 
   logout(){

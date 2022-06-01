@@ -32,5 +32,21 @@ namespace PinguCheckIn.Negocio.Reservas
 
 
         }
+
+        public List<ReservaDto> ReservasFeitas()
+        {
+            var reservar = (from r in this.Contexto.Reserva
+                            join q in this.Contexto.Quarto on r.IdQuarto equals q.IdQuarto
+                            join c in this.Contexto.Cliente on r.IdCliente equals c.IdCliente
+                            join u in this.Contexto.Usuario on c.IdUsuario equals u.IdUsuario
+                            select new AdministradorControleDto
+                            {
+                                IdReserva = r.IdReserva,
+                                Nome = u.Nome,
+                                Sobrenome = u.Sobrenome,
+                                Quarto = q.Nome,
+
+                            }) ;
+        }
     }
 }
