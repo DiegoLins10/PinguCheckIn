@@ -1,5 +1,6 @@
 ﻿using PinguCheckIn.Models.Dtos;
 using PinguCheckIn.Models.Entidades;
+using PinguCheckIn.Models.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,7 +34,7 @@ namespace PinguCheckIn.Negocio.Reservas
 
         }
 
-        public List<ReservaDto> ReservasFeitas()
+        public List<AdministradorControleDto> ReservasFeitas()
         {
             var reservar = (from r in this.Contexto.Reserva
                             join q in this.Contexto.Quarto on r.IdQuarto equals q.IdQuarto
@@ -45,8 +46,15 @@ namespace PinguCheckIn.Negocio.Reservas
                                 Nome = u.Nome,
                                 Sobrenome = u.Sobrenome,
                                 Quarto = q.Nome,
+                                Entrada = r.DataEntrada,
+                                Saida = r.DataSaida,
+                                Status = r.Status,
+                                StatusString = ((Status)r.Status).ToString(),
+                                DataReserva = r.DataReserva
 
-                            }) ;
+                            }).ToList();
+
+            return reservar;
         }
     }
 }

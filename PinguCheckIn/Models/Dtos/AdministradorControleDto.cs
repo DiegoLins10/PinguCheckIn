@@ -14,5 +14,8 @@ namespace PinguCheckIn.Models.Dtos
         public DateTime Entrada { get; set; }
         public DateTime Saida { get; set; }
         public int Status { get; set; }
+        public string StatusString { get; set; }
+        public DateTime DataReserva { get; set; }
+
     }
 }

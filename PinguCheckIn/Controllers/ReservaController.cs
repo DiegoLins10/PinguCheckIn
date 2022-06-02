@@ -41,5 +41,27 @@ namespace PinguCheckIn.Controllers
 
             return Ok(new { msg = msg });
         }
+
+        [HttpGet("GetAdmReservas")]
+        public IActionResult AdmReservas()
+        {
+
+            try
+            {
+                var list = new ReservaNegocio().ReservasFeitas();
+
+                if(list.Count == 0)
+                {
+                    return NotFound("Nenhuma reserva encontrada");
+                }
+
+                return Ok(list);
+            }
+            catch(Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+       
+        }
     }
 }
