@@ -1,4 +1,5 @@
 ﻿using PinguCheckIn.Models.Dtos;
+using PinguCheckIn.Models.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -55,7 +56,7 @@ namespace PinguCheckIn.Negocio.Quartos
         {
             var quartosNaoDisponiveis = (from reserva in this.Contexto.Reserva
                                          join quarto in this.Contexto.Quarto on reserva.IdQuarto equals quarto.IdQuarto
-                                         where quarto.IdQuarto == filtro.IdQuarto && reserva.DataEntrada <= filtro.DataSaida & filtro.DataEntrada <= reserva.DataSaida
+                                         where quarto.IdQuarto == filtro.IdQuarto && reserva.DataEntrada <= filtro.DataSaida & filtro.DataEntrada <= reserva.DataSaida && reserva.Status != (int)Status.Cancelada && reserva.Status != (int)Status.Finalizada
                                          select quarto).ToList();
 
 

@@ -4,11 +4,11 @@
         <div class="table-wrapper">
             <div class="table-title">
                 <div class="row">
-                    <div class="col-sm-3">
+                    <div class="col-sm-4">
                         <h2>Administrador <b>Controle</b></h2>
 
                     </div>
-                    <div class="col-sm-4">
+                    <div class="col-sm-6">
                         <input [(ngModel)]="reservasIdFiltro" class="form-control mb-2" (keyup)="FilterFn()"
                             placeholder="Filtrar por Reserva" style="width: 50%;">       
                             <input [(ngModel)]="reservasNomeFiltro" class="form-control mb-2" (keyup)="FilterFn()"
@@ -18,13 +18,35 @@
                         <input [(ngModel)]="reservasNomeFiltro" class="form-control mb-2" (keyup)="FilterFn()"
                             placeholder="Filtrar" style="width: 50%;">
                     </div> -->
+                   
 
-                    <div class="col-sm-5">
-                        <a href="#" class="btn btn-primary"><i class="material-icons">&#xE24D;</i> <span>Exportar
-                                CSV</span></a>                                       
+                    <div class="col-sm-2">
+                        <label>Parametros (periodo/status)</label>
+                        <select [(ngModel)]="periodo" class="form-control mb-2">
+                            <!-- <option value=""></option> -->
+                            <!-- <option value='' disabled>Não selecionado</option> -->
+                            <option value="1">Nenhum</option>
+                            <option value="2" >Dia/Hoje</option>
+                            <option value="3">Semana</option>
+                            <option value="4">Mes</option>
+                        </select> 
+                        <select [(ngModel)]="status" class="form-control mb-2">
+                            <!-- <option value=""></option> -->
+                            <!-- <option value='' disabled>Não selecionado</option> -->
+                            <option value="N">Nenhum</option>
+                            <option value="1">Reservado</option>
+                            <option value="2">Cancelada</option>
+                            <option value="3">Finalizada</option>
+                        </select> 
+                            <a (click)="baixar()" class="btn btn-primary"><i class="material-icons">&#xE24D;</i> <span>Exportar
+                                CSV</span></a>              
                     </div>
+                    
                 </div>
             </div>
+            <div class="">
+                <app-loader [isLoading]="Isloading" message="Carregando..."></app-loader>
+             </div>
             <table class="table table-striped table-hover">
                 <thead>
                     <tr>
@@ -50,9 +72,9 @@
                         <td>{{r.dataReserva}}</td>
                         <td><span class="c-pill c-pill--{{r.statusString}}">{{r.statusString}}</span></td>
                         <td>
-                            <a href="#" class="settings" title="Finalizar" data-toggle="tooltip"><i
+                            <a  *ngIf="r.status == 1" (click)="Finalizar(r.idReserva)" class="settings point" title="Finalizar" data-toggle="tooltip"><i
                                     class="material-icons">check_circle</i></a>
-                            <a href="#" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE5C9;</i></a>
+                            <a  *ngIf="r.status != 2 && r.status != 3" (click)="Cancelar(r.idReserva)" class="delete point" title="Cancelar" data-toggle="tooltip"><i class="material-icons">&#xE5C9;</i></a>
                         </td>
                     </tr>
                 </tbody>

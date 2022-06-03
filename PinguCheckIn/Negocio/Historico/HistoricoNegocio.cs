@@ -63,5 +63,29 @@ namespace PinguCheckIn.Negocio.Historico
 
            
         }
+
+        public string FinalizarReserva(int idReserva)
+        {
+            try
+            {
+                var reserva = this.Contexto.Reserva.Where(r => r.IdReserva == idReserva).FirstOrDefault();
+
+                if (reserva == null)
+                {
+                    return "Reserva não encontrada";
+                }
+
+                reserva.Status = (int)Status.Finalizada;
+                this.Contexto.SaveChanges();
+
+                return "Finalizada com sucesso";
+            }
+            catch (Exception e)
+            {
+                return e.Message;
+            }
+
+
+        }
     }
 }

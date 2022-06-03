@@ -23,16 +23,21 @@ export class AdministradorComponent implements OnInit {
   reservas: any;
   reservaSemFiltro: any;
 
+  periodo: any;
+  status: any;
+
   constructor(private authenticationService: AuthenticationService, private router: Router, private service: AdministradorService) { }
 
   ngOnInit(): void {
     this.autenticado = this.authenticationService.isAuthenticated();
     if(this.autenticado){
-      this.router.navigate(['/adm/reservasNomeFiltro'])
+      this.router.navigate(['/adm/reservas'])
     }else{
       this.router.navigate([''])
     }
     this.GetReservas();
+    this.periodo = "1";
+    this.status = "N";
   }
 
   GetReservas(){
@@ -57,6 +62,7 @@ export class AdministradorComponent implements OnInit {
         this.reservas = res;
         this.reservaSemFiltro = res;
         console.log(res)
+        this.Isloading = false;
       },
       error: error => {
         console.log(error.error);
@@ -98,7 +104,69 @@ export class AdministradorComponent implements OnInit {
       }
     })
   }
+
+
+  Cancelar(idReserva: any){
+    this.service.GetCancelar(idReserva).subscribe({
+      next: res =>{
+        console.log(res);
+        window.location.reload();
+      },
+      error: error =>{
+        console.log(error);
+      }
+    })
+  }
+
+  Finalizar(idReserva: any){
+    this.service.GetFinalizar(idReserva).subscribe({
+      next: res =>{
+        console.log(res);
+        window.location.reload();
+      },
+      error: error =>{
+        console.log(error);
+      }
+    })
+  }
   
+  baixar() {
+    this.Isloading = true;
+
+   
+
+    // efetua o download do arquivo
+    this.service
+      .GerarRelatorio(this.status, this.periodo)
+      .pipe(
+        finalize(() => {
+          this.Isloading = false;
+        })
+      )
+      .subscribe((res : any) => {
+        var file = new Blob([res], {
+          type: res.type
+        });
+
+        //IE
+        const nav = window.navigator as any;
+        if (window.navigator && nav.msSaveOrOpenBlob) {
+          nav.msSaveOrOpenBlob(file);
+          return;
+        }
+
+        var blob = window.URL.createObjectURL(file);
+
+        // Cria um elemento âncora e já clica
+        var link = document.createElement('a');
+        link.href = blob;
+        link.download = `relatorio_pingu_${formatDate(this.myDate, this.format, this.locale)}.csv`
+        link.click();
+
+        window.URL.revokeObjectURL(blob);
+        link.remove();
+      });
+  }
   
 
 }

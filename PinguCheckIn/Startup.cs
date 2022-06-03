@@ -15,6 +15,7 @@ using System.Text;
 using PinguCheckIn.Security;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
+using System.IO;
 
 namespace PinguCheckIn
 {
@@ -106,6 +107,8 @@ namespace PinguCheckIn
             {
                 endpoints.MapControllers();
             });
+
+            Directory.CreateDirectory(Directory.GetCurrentDirectory() + "\\Relatorios\\");
         }
     }
 }

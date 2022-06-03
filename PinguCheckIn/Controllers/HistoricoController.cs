@@ -47,5 +47,13 @@ namespace PinguCheckIn.Controllers
 
             return Ok(new { msg = dados});
         }
+
+        [HttpGet("GetFinalizar")]
+        public IActionResult Finalizar(int idReserva)
+        {
+            string dados = new HistoricoNegocio().FinalizarReserva(idReserva);
+
+            return Ok(new { msg = dados });
+        }
     }
 }
