@@ -39,5 +39,6 @@ manutenções na interface de usuário com poucos efeitos colaterais. A arquitet
 arquitetura MVC.
 A estratégia de construção e integração do software será ascendente na hierarquia de controle, ou seja, da base de dados (backend) para
 a interface de interação homem máquina (frontend).
-### Modelo de Domínio
+### Diagrama de classes
+![](https://github.com/DiegoLins10/PinguCheckIn/blob/master/Diagrama%20Pingu.png)
 
