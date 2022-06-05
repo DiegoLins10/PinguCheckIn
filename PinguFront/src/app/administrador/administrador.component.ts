@@ -167,6 +167,29 @@ export class AdministradorComponent implements OnInit {
         link.remove();
       });
   }
+
+  FinalizarTodasReservasTerminadas(){
+    this.mensagem = []
+    this.Isloading = true;
+    this.service.GetFinalizarReservas().subscribe({
+      next: res => {
+        window.location.reload();
+        this.Isloading = false;
+      },
+      error: error => {
+        if(error.error.message){
+          this.mensagem.push(error.error.message);
+          this.Isloading = false;
+        }
+        else{
+          this.mensagem.push(error.message);
+          this.Isloading = false;
+        }
+        console.log(error)
+        this.Isloading = false;
+      }
+    })
+  }
   
 
 }

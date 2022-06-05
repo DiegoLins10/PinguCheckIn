@@ -9,8 +9,8 @@ import { AuthenticationService, Credentials } from '../authentication/authentica
 })
 export class LoginComponent implements OnInit {
 
-  user: string;
-  senha: string;
+  user!: string;
+  senha!: string;
   loading!: boolean;
   autenticado: any;
   mensagem: any;

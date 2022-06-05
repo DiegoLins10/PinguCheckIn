@@ -12,7 +12,7 @@ export class AdministradorService {
   }
 
   url = 'https://pinguapi.azurewebsites.net/';
-  //  url = 'https://localhost:44354/';
+    // url = 'https://localhost:44354/';
 
 
   GetReservas(){
@@ -38,6 +38,12 @@ export class AdministradorService {
     .get<any>(this.url + `Reserva/baixar?status=${status}&periodo=${periodo}`, {
       responseType: 'blob' as 'json'
     })
+    .pipe(map((body: any) => body));
+  }
+
+  GetFinalizarReservas(){
+    return this.httpClient
+    .get<any>(this.url + `Reserva/FinalizarReservas`)
     .pipe(map((body: any) => body));
   }
 }

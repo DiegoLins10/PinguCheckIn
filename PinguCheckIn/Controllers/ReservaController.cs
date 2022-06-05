@@ -97,5 +97,21 @@ namespace PinguCheckIn.Controllers
             return File(System.IO.File.ReadAllBytes(file.Path), "text/csv", file.FileName);
         }
 
+        [HttpGet("FinalizarReservas")]
+        public IActionResult FinalizarReservas(string status, string periodo)
+        {
+            try
+            {
+                string res = new ReservaNegocio().FinalizarReservas();       
+                return Ok(new { msg = res });
+            }
+            catch(Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+
+            
+        }
+
     }
 }

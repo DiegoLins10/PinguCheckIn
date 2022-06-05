@@ -43,8 +43,8 @@ namespace PinguCheckIn.Negocio.Reservas
                             select new AdministradorControleDto
                             {
                                 IdReserva = r.IdReserva,
-                                Nome = u.Nome,
-                                Sobrenome = u.Sobrenome,
+                                Nome = u.Nome.ToUpper(),
+                                Sobrenome = u.Sobrenome.ToUpper(),
                                 Quarto = q.Nome,
                                 Entrada = r.DataEntrada,
                                 Saida = r.DataSaida,
@@ -55,6 +55,26 @@ namespace PinguCheckIn.Negocio.Reservas
                             }).ToList();
 
             return reservar;
+        }
+
+        public string FinalizarReservas()
+        {
+
+            var reservas = this.Contexto.Reserva.Where(d => d.DataSaida < DateTime.Now && d.Status == (int)Status.Reservado ).ToList();
+
+            if (!reservas.Any())
+            {
+                return "Nenhuma reserva encontrada";
+            }
+
+            foreach(var r in reservas)
+            {
+                r.Status = (int)Status.Finalizada;
+            }
+
+            this.Contexto.SaveChanges();
+
+            return "reservas finalizadas com sucesso";
         }
     }
 }
