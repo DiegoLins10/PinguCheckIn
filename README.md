@@ -40,5 +40,8 @@ arquitetura MVC.
 A estratégia de construção e integração do software será ascendente na hierarquia de controle, ou seja, da base de dados (backend) para
 a interface de interação homem máquina (frontend).
 ### Diagrama de classes
+![](https://github.com/DiegoLins10/PinguCheckIn/blob/master/imagem.png)
+
+### Diagrama de classes
 ![](https://github.com/DiegoLins10/PinguCheckIn/blob/master/Diagrama%20Pingu.png)
 
