@@ -11,7 +11,7 @@ export class AdministradorService {
 
   }
 
-  url = 'https://pinguapi.azurewebsites.net/';
+  url = 'https://localhost:44354/';
     // url = 'https://localhost:44354/';
 
 

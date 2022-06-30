@@ -10,7 +10,7 @@ export class QuartosService {
 
   constructor(private httpClient: HttpClient) { }
 
-  url = 'https://pinguapi.azurewebsites.net/';
+  url = 'https://localhost:44354/';
 
   GetQuartos(){
     return this.httpClient

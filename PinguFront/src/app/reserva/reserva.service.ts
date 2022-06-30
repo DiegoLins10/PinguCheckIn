@@ -9,7 +9,7 @@ export class ReservaService {
 
   constructor(private httpClient: HttpClient) { }
 
-  url = 'https://pinguapi.azurewebsites.net/';
+  url = 'https://localhost:44354/';
 
   Disponivel(data: any){
     return this.httpClient
