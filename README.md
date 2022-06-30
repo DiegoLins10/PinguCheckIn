@@ -66,5 +66,5 @@ a interface de interação homem máquina (frontend).
 ![](https://github.com/DiegoLins10/PinguCheckIn/blob/master/Perfil.png)
 
 ### Diagrama de classes
-![](https://github.com/DiegoLins10/PinguCheckIn/blob/master/Diagrama%20Pingu.png)
+![](https://github.com/DiegoLins10/PinguCheckIn/blob/master/diagrama.jpeg)
 
