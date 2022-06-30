@@ -39,8 +39,24 @@ manutenções na interface de usuário com poucos efeitos colaterais. A arquitet
 arquitetura MVC.
 A estratégia de construção e integração do software será ascendente na hierarquia de controle, ou seja, da base de dados (backend) para
 a interface de interação homem máquina (frontend).
-### Diagrama de classes
+## Telas sistema
+### Reservar quarto
 ![](https://github.com/DiegoLins10/PinguCheckIn/blob/master/imagem.png)
+
+### Quartos
+![](https://github.com/DiegoLins10/PinguCheckIn/blob/master/imagem2.png)
+
+### Confirmação reserva
+![](https://github.com/DiegoLins10/PinguCheckIn/blob/master/imagem3.png)
+
+### Historico de reservas
+![](https://github.com/DiegoLins10/PinguCheckIn/blob/master/imagem4.png)
+
+### Login
+![](https://github.com/DiegoLins10/PinguCheckIn/blob/master/login.png)
+
+### Perfil editar
+![](https://github.com/DiegoLins10/PinguCheckIn/blob/master/Perfil.png)
 
 ### Diagrama de classes
 ![](https://github.com/DiegoLins10/PinguCheckIn/blob/master/Diagrama%20Pingu.png)
