@@ -18,14 +18,21 @@ realizada pelo grupo e uma ata é publicada no Teams.
 - SQL Server
 !()
 ### Backlog do produto
-- REQ01 – Cadastrar novos usuarios
-Como – Por uma tela de cadastro
-Quando – Um novo usuario quiser se cadastrar
-De maneira que – seja possível acessar o sistema
-- REQ01CT01 – Fazer Login
-Dado: que o usuario já tenha se cadastrado
-Quando: o usuario quiser se logar na sua conta
-Então: o sistema valida os dados do usuario (user e senha) e apresenta a tela inicial
+## Requisito 1: Cadastrar Usuario
+- O sistema deve permitir o cadastro de novos usuarios recebendo seus dados (nome, CPF, data de
+nascimento, etc...)
+## Requisitos 2: Login do Usuário
+- Permitir que um usuário cadastrado consiga utilizar o sistema utilizando suas credencias já cadastradas
+## Requisitos 3: Visualizar Quartos disponíveis
+- Permitir que um cliente autenticado no sistema consiga visualizar os quartos disponibilizados pelo hotel e
+suas informações como disponibilidade de horários, valores, etc...
+
+## Requisitos 4: Efetuar a reserva
+- Permitir que um usuário-cliente autenticado no sistema possa escolher um quarto de sua preferencia onde
+enha disponibilidade de horário, efetuando assim a reserva caso todos os critérios sejam atendidos ele
+receberá
+## Requisitos 5: Permitir o cancelamento reserva
+- Permitir que um usuário-cliente autenticado no sistema possa cancelar sua reserva já feita.
 
 ### 1. Planejamento da Sprint
 Durante a fase de planejamento as funcionalidades nesta interação são selecionadas do backlog do produto.
@@ -39,6 +46,25 @@ manutenções na interface de usuário com poucos efeitos colaterais. A arquitet
 arquitetura MVC.
 A estratégia de construção e integração do software será ascendente na hierarquia de controle, ou seja, da base de dados (backend) para
 a interface de interação homem máquina (frontend).
+## Telas sistema
+### Reservar quarto
+![](https://github.com/DiegoLins10/PinguCheckIn/blob/master/imagem.png)
+
+### Quartos
+![](https://github.com/DiegoLins10/PinguCheckIn/blob/master/imagem2.png)
+
+### Confirmação reserva
+![](https://github.com/DiegoLins10/PinguCheckIn/blob/master/imagem3.png)
+
+### Historico de reservas
+![](https://github.com/DiegoLins10/PinguCheckIn/blob/master/imagem4.png)
+
+### Login
+![](https://github.com/DiegoLins10/PinguCheckIn/blob/master/login.png)
+
+### Perfil editar
+![](https://github.com/DiegoLins10/PinguCheckIn/blob/master/Perfil.png)
+
 ### Diagrama de classes
 ![](https://github.com/DiegoLins10/PinguCheckIn/blob/master/Diagrama%20Pingu.png)
 
