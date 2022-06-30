@@ -18,20 +18,20 @@ realizada pelo grupo e uma ata é publicada no Teams.
 - SQL Server
 !()
 ### Backlog do produto
-# Requisito 1: Cadastrar Usuario
+## Requisito 1: Cadastrar Usuario
 - O sistema deve permitir o cadastro de novos usuarios recebendo seus dados (nome, CPF, data de
 nascimento, etc...)
-# Requisitos 2: Login do Usuário
+## Requisitos 2: Login do Usuário
 - Permitir que um usuário cadastrado consiga utilizar o sistema utilizando suas credencias já cadastradas
-# Requisitos 3: Visualizar Quartos disponíveis
+## Requisitos 3: Visualizar Quartos disponíveis
 - Permitir que um cliente autenticado no sistema consiga visualizar os quartos disponibilizados pelo hotel e
 suas informações como disponibilidade de horários, valores, etc...
 
-# Requisitos 4: Efetuar a reserva
+## Requisitos 4: Efetuar a reserva
 - Permitir que um usuário-cliente autenticado no sistema possa escolher um quarto de sua preferencia onde
 enha disponibilidade de horário, efetuando assim a reserva caso todos os critérios sejam atendidos ele
 receberá
-# Requisitos 5: Permitir o cancelamento reserva
+## Requisitos 5: Permitir o cancelamento reserva
 - Permitir que um usuário-cliente autenticado no sistema possa cancelar sua reserva já feita.
 
 ### 1. Planejamento da Sprint
